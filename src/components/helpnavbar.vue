@@ -1,8 +1,8 @@
 <template>
-  <ul>
-    <li><router-link to="/happyhouse/HelpDesk/QNA">QNA</router-link></li>
-    <li><router-link to="/happyhouse/HelpDesk/Notice">Notice</router-link></li>
-  </ul>
+  <div>
+    <router-link to="/happyhouse/HelpDesk/QNA/list">QNA</router-link>
+    <router-link to="/happyhouse/HelpDesk/Notice">Notice</router-link>
+  </div>
 </template>
 
 <script>

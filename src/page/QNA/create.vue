@@ -1,22 +1,41 @@
 <template>
   <div>
-    작성자 : <input type="text" v-model="BoardQNA.bwriter" /><br />
-    제목 : <input type="text" v-model="BoardQNA.btitle" /><br />
-    내용 : <input type="text" v-model="BoardQNA.bcontent" /><br />
-    날짜 : <input type="date" v-model="BoardQNA.regdate" /><br />
+    <table>
+      <tr>
+        <td>작성자</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="2">제목</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="text" v-model="BoardQNA.btitle" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">내용</td>
+      </tr>
+      <tr>
+        <td>
+          <textarea rows="10" cols="60" v-model="BoardQNA.bcontent"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><input type="hidden" v-model="BoardQNA.regdate" /></td>
+      </tr>
+    </table>
+
     <button @click="send">작성</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-console.log('hihi');
 
 export default {
   data() {
     return {
       BoardQNA: {
-        bwriter: '',
+        bwriter: 'ssafy',
         btitle: '',
         bcontent: '',
         regdate: '',
@@ -25,11 +44,12 @@ export default {
   },
   methods: {
     send() {
+      console.log(this.BoardQNA.regdate);
       axios
-        .post('http://localhost:8000/happyhouse/rest/create', this.BoardQNA)
+        .post('http://localhost:8000/happyhouse/qna/create', this.BoardQNA)
         .then((response) => {
           alert(response);
-          this.$router.push('/happyhouse/qna');
+          this.$router.push('/happyhouse/HelpDesk/QNA/list');
         })
         .catch((ex) => {
           console.log(ex);

@@ -25,44 +25,46 @@ const routes = [
     path: "/happyhouse/HelpDesk",
     name: "HelpDesk",
     component: HelpDesk,
-  },
-  {
-    path: "/happyhouse/HelpDesk/QNA",
-    name: "QNA",
-    component: QNA,
-    redirect: "/happyhouse/HelpDesk/QNA/list",
     children: [
       {
-        path: "list",
-        name: "list",
-        component: QNAList
+        path: "/happyhouse/HelpDesk/QNA",
+        name: "QNA",
+        component: QNA,
+        redirect: "/happyhouse/HelpDesk/QNA/list",
+        children: [
+          {
+            path: "list",
+            name: "list",
+            component: QNAList
+          },
+          {
+            path: "create",
+            name: "create",
+            component: QNACreate
+          },
+          {
+            path: "read/:bno",
+            name: "read",
+            component: QNARead
+          },
+          {
+            path: "update/:bno",
+            name: "update",
+            component: QNAUpdate
+          },
+          {
+            path: "delete",
+            name: "delete",
+            component: QNADelete
+          }
+        ]
       },
       {
-        path: "create",
-        name: "create",
-        component: QNACreate
-      },
-      {
-        path: "read",
-        name: "read",
-        component: QNARead
-      },
-      {
-        path: "update",
-        name: "update",
-        component: QNAUpdate
-      },
-      {
-        path: "delete",
-        name: "delete",
-        component: QNADelete
+        path: "/happyhouse/HelpDesk/Notice",
+        name: "Notice",
+        component: Notice
       }
     ]
-  },
-  {
-    path: "/happyhouse/HelpDesk/Notice",
-    name: "Notice",
-    component: Notice
   }
 ];
 

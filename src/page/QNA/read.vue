@@ -44,7 +44,7 @@ export default {
   created() {
     axios
       .get(
-        'http://localhost:8000/happyhouse/rest/detail/' + this.$route.params.bno
+        'http://localhost:8000/happyhouse/qna/detail/' + this.$route.params.bno
       )
       .then((response) => {
         console.log(response.data);
@@ -57,13 +57,11 @@ export default {
   methods: {
     deleteQNA() {
       axios
-        .delete(
-          'http://localhost:8000/happyhouse/rest/delete/' + this.board.bno
-        )
+        .delete('http://localhost:8000/happyhouse/qna/delete/' + this.board.bno)
         .then((response) => {
           console.log(response);
           // window.location.href = 'happyhouse/qna';
-          this.$router.push('/happyhouse/qna');
+          this.$router.push('/happyhouse/HelpDesk/QNA/list');
         })
         .catch((ex) => {
           console.log(ex);
@@ -71,7 +69,7 @@ export default {
     },
     update() {
       this.$router.push({
-        path: '/happyhouse/update/' + this.board.bno,
+        path: '/happyhouse/HelpDesk/QNA/update/' + this.board.bno,
       });
     },
   },

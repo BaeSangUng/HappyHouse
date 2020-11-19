@@ -10,7 +10,7 @@
       <tr v-for="item in items" v-bind:key="item.no">
         <td>{{ item.bno }}</td>
         <td>
-          <router-link :to="'/happyhouse/QNA/qna/read/' + item.bno">{{
+          <router-link :to="'/happyhouse/HelpDesk/QNA/read/' + item.bno">{{
             item.btitle
           }}</router-link>
         </td>
@@ -19,7 +19,7 @@
       </tr>
     </table>
 
-    <router-link to="write-qna">글쓰기</router-link>
+    <router-link to="create">글쓰기</router-link>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
   },
   created() {
     axios
-      .get('http://localhost:8000/happyhouse/rest/read')
+      .get('http://localhost:8000/happyhouse/qna/read')
       .then((response) => {
         {
           this.items = response.data;
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     detail(bno) {
-      this.$router.push('/happyhouse/QNA/qna/read/' + bno);
+      this.$router.push('/happyhouse/HelpDesk/QNA/read/' + bno);
     },
   },
 };
