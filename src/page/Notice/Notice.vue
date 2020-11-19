@@ -1,11 +1,17 @@
 <template>
   <div>
+    <helpnavbar />
     Notice Page 임돠
   </div>
 </template>
 
 <script>
-export default {};
+import helpnavbar from '@/components/helpnavbar.vue';
+export default {
+  components: {
+    helpnavbar,
+  },
+};
 </script>
 
 <style></style>

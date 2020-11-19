@@ -7,9 +7,9 @@ import HelpDesk from "@/views/HelpDesk.vue";
 import QNA from "@/page/QNA/QNA.vue";
 import QNAList from "@/page/QNA/list.vue";
 import QNACreate from "@/page/QNA/create.vue";
-import QNARead from '@/page/QNA/read.vue';
-import QNAUpdate from '@/page/QNA/update.vue';
-import QNADelete from '@/page/QNA/delete.vue';
+import QNARead from "@/page/QNA/read.vue";
+import QNAUpdate from "@/page/QNA/update.vue";
+import QNADelete from "@/page/QNA/delete.vue";
 
 import Notice from "@/page/Notice/Notice.vue";
 
@@ -22,51 +22,47 @@ const routes = [
     component: Home
   },
   {
-    path: "/HelpDesk",
+    path: "/happyhouse/HelpDesk",
     name: "HelpDesk",
     component: HelpDesk,
-    redirect: '/HelpDesk/QNA',
+  },
+  {
+    path: "/happyhouse/HelpDesk/QNA",
+    name: "QNA",
+    component: QNA,
+    redirect: "/happyhouse/HelpDesk/QNA/list",
     children: [
       {
-        path: 'QNA',
-        name: 'QNA',
-        component: QNA,
-        redirect: '/HelpDesk/QNA/list',
-        children: [
-          {
-            path: 'list',
-            name: 'list',
-            component : QNAList,
-          },
-          {
-            path: 'create',
-            name: 'create',
-            component: QNACreate,
-          },
-          {
-            path: 'read',
-            name: 'read',
-            component: QNARead,
-          },
-          {
-            path: 'update',
-            name: 'update',
-            component: QNAUpdate,
-          },
-          {
-            path: 'delete',
-            name: 'delete',
-            component: QNADelete,
-          },
-        ]
-
+        path: "list",
+        name: "list",
+        component: QNAList
       },
       {
-        path: 'Notice',
-        name: 'Notice',
-        component : Notice,
+        path: "create",
+        name: "create",
+        component: QNACreate
+      },
+      {
+        path: "read",
+        name: "read",
+        component: QNARead
+      },
+      {
+        path: "update",
+        name: "update",
+        component: QNAUpdate
+      },
+      {
+        path: "delete",
+        name: "delete",
+        component: QNADelete
       }
     ]
+  },
+  {
+    path: "/happyhouse/HelpDesk/Notice",
+    name: "Notice",
+    component: Notice
   }
 ];
 
