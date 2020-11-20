@@ -13,6 +13,10 @@ import QNADelete from "@/page/QNA/delete.vue";
 
 import Notice from "@/page/Notice/Notice.vue";
 
+import Login from "../views/member/Login.vue";
+import JoinForm from "../views/member/JoinForm.vue";
+import LoginForm from "../views/member/LoginForm.vue";
+import UpdateForm from "../views/member/UpdateForm.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -65,6 +69,26 @@ const routes = [
         component: Notice
       }
     ]
+  },
+  {
+    path: "/happyhouse/login",
+    name: "Login",
+    component: Login
+  },
+  {
+    path: "/happyhouse/loginForm",
+    name: "LoginForm",
+    component: LoginForm
+  },
+  {
+    path: "/happyhouse/joinForm",
+    name: "JoinForm",
+    component: JoinForm
+  },
+  {
+    path: "/happyhouse/updateForm",
+    name: "UpdateForm",
+    component: UpdateForm
   }
 ];
 

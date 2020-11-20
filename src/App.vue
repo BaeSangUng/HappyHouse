@@ -20,7 +20,10 @@
       </div>
 
       <!-- 오른쪽 사이드 -->
-      <div class="col">로그인 올자리</div>
+      <div class="col">
+        <router-link to="/happyhouse/login">login</router-link>
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -40,8 +43,7 @@ export default {
   },
   methods: {
     onScroll() {
-      const currentScrollPosition =
-        window.pageYOffset || document.documentElement.scrollTop;
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
       if (currentScrollPosition < 0) {
         return;
       }
