@@ -3,14 +3,24 @@
     <div class="navbar">
       <img id="logo" src="@/assets/logo.jpg">
       <b-nav tabs>
-          <b-nav-item :active="tab===1" @click="tab=1">
-            <router-link to="/">Home</router-link></b-nav-item>
-          <b-nav-item :active="tab===2" @click="tab=2">
-            <router-link to="/happyhouse/HelpDesk">HelpDesk</router-link></b-nav-item>
-          <b-nav-item :active="tab===3" @click="tab=3">
-            <router-link to="/happyhouse/login">login</router-link></b-nav-item>
+          <b-nav-item :active="tab===1" @click="tab=1, showbanner=true" class="navitem">
+            <b-link to="/" class="navbutton">Home</b-link>
+          </b-nav-item>
+          <b-nav-item :active="tab===2" @click="tab=2, showbanner=false" class="navitem">
+            <b-link to="/happyhouse/HelpDesk" class="navbutton">HelpDesk</b-link>
+          </b-nav-item>
+          <b-nav-item :active="tab===3" @click="tab=3, showbanner=false" class="navitem">
+            <b-link to="/happyhouse/login" class="navbutton">login</b-link>
+          </b-nav-item>
       </b-nav>
-  </div>
+    </div>
+    <div class="banner" v-show="showbanner">
+      <div class="emptyspace"></div>
+      <div id="banner">
+        <h2>당신이 원하는 집을 검색</h2>
+        <b-form-input id="searchinput"></b-form-input> <b-button id="searchbtn" variant="success">Success</b-button>
+      </div>
+    </div>
     <div class="row">
       <!-- 왼쪽 사이드 -->
       <div class="col">
@@ -24,7 +34,6 @@
       <!-- 오른쪽 사이드 -->
       <div class="col">
         
-        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -33,7 +42,8 @@
 export default {
   data() {
     return {
-      tab : 1,      
+      tab : 1,
+      showbanner : true,
     }
   }
 }
@@ -54,11 +64,32 @@ export default {
   position: fixed;
 
 }
+.navbutton{
+  width:100%;
+  height:100%;
+  padding:0;
+}
 #logo {
   width:80px;
   height: 80px;
 }
-
+.emptyspace{
+  height:200px;
+}
+#banner{
+  height:200px;
+  position: relative;
+  width:100%;
+}
+#searchinput{
+  position :relative;
+  width:40%;
+  display:inline-block;
+}
+#searchbtn{
+  position: relative;
+  display : inline-block;
+}
 .col {
   background: grey;
 }
