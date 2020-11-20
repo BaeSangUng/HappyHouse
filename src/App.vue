@@ -3,12 +3,15 @@
     <div class="navbar">
       <img id="logo" src="@/assets/logo.jpg">
       <b-nav tabs>
-          <b-nav-item :active="tab===1" @click="tab=1, showbanner=true">
-            <router-link to="/">Home</router-link></b-nav-item>
-          <b-nav-item :active="tab===2" @click="tab=2, showbanner=false">
-            <router-link to="/happyhouse/HelpDesk">HelpDesk</router-link></b-nav-item>
-          <b-nav-item :active="tab===3" @click="tab=3, showbanner=false">
-            <router-link to="/happyhouse/login">login</router-link></b-nav-item>
+          <b-nav-item :active="tab===1" @click="tab=1, showbanner=true" class="navitem">
+            <b-link to="/" class="navbutton">Home</b-link>
+          </b-nav-item>
+          <b-nav-item :active="tab===2" @click="tab=2, showbanner=false" class="navitem">
+            <b-link to="/happyhouse/HelpDesk" class="navbutton">HelpDesk</b-link>
+          </b-nav-item>
+          <b-nav-item :active="tab===3" @click="tab=3, showbanner=false" class="navitem">
+            <b-link to="/happyhouse/login" class="navbutton">login</b-link>
+          </b-nav-item>
       </b-nav>
     </div>
     <div class="banner" v-show="showbanner">
@@ -60,6 +63,11 @@ export default {
   width:100%;
   position: fixed;
 
+}
+.navbutton{
+  width:100%;
+  height:100%;
+  padding:0;
 }
 #logo {
   width:80px;
