@@ -20,7 +20,7 @@
 
           <div v-else>
             <router-link to="/happyhouse/loginModal">로그인</router-link> |
-            <router-link to="/join">회원가입</router-link>
+            <router-link to="/happyhouse/joinModal">회원가입</router-link>
           </div>
         </b-nav-item>
       </b-nav>
@@ -35,7 +35,6 @@ export default {
   data() {
     return {
       tab: '',
-      isLogin: false,
     };
   },
   computed: {
@@ -48,6 +47,17 @@ export default {
     onClickLogout() {
       this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
     },
+  },
+  created() {
+    if (
+      sessionStorage.getItem('accessToken') != null &&
+      sessionStorage.getItem('accessToken') != ''
+    ) {
+      this.$store.state.accessToken = sessionStorage.getItem('accessToken');
+      this.$store.state.userId = sessionStorage.getItem('userId');
+      this.$store.state.userPw = sessionStorage.getItem('userPw');
+      this.$store.state.userName = sessionStorage.getItem('userName');
+    }
   },
 };
 </script>

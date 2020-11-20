@@ -43,18 +43,22 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN(context, user) {
-      console.log(user);
       return axios
         .post(`${SERVER_URL}/member/select/`, user)
         .then((response) => {
           context.commit("LOGIN", response.data);
           axios.defaults.headers.common["auth-token"] = `${response.data["auth-token"]}`;
-          console.log(response);
+
+          sessionStorage.setItem("accessToken", this.state.accessToken);
+          sessionStorage.setItem("userId", this.state.userId);
+          sessionStorage.setItem("userPw", this.state.userPw);
+          sessionStorage.setItem("userName", this.state.userName);
         });
     },
     LOGOUT(context) {
       context.commit("LOGOUT");
       axios.defaults.headers.common["auth-token"] = undefined;
+      sessionStorage.clear();
     }
   },
   modules: {}

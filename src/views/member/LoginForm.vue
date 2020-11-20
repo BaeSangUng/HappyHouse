@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Login',
   data() {
@@ -31,17 +33,28 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
     nextRoute() {
       return this.$route.params.nextRoute ? this.$route.params.nextRoute : '';
     },
   },
   methods: {
     login() {
-      console.log(this.user);
       this.$store
         .dispatch('LOGIN', this.user)
         .then(() => this.$router.replace(`/${this.nextRoute}`))
         .catch(({ message }) => (this.msg = message));
+      console.log(this.$store.state.userId);
+      if (this.$store.getAccessToken != null) {
+        alert('Login Success');
+        this.$router.push('/happyhouse');
+      } else {
+        alert('Login Failed');
+      }
+    },
+    cancel() {
+      this.$emit('close');
+      this.$router.push('/happyhouse');
     },
   },
 };
