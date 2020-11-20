@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>QNA 페이지임돠</p>
+    <h1>QNA</h1>
     <router-view />
   </div>
 </template>

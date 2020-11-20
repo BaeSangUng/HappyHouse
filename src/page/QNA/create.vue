@@ -1,26 +1,24 @@
 <template>
   <div>
     <table>
-      <tr>
-        <td>작성자</td>
-        <td></td>
+      <tr class="form-tr">
+        <td class="input-group-text listname">작성자</td>
+        <td class="inputname"></td>
       </tr>
-      <tr>
-        <td colspan="2">제목</td>
+      <tr class="form-tr">
+        <td class="input-group-text listname">제목</td>
+        <td><input type="text" class="form-control inputname" v-model="BoardQNA.btitle" /></td>
       </tr>
-      <tr>
-        <td colspan="2"><input type="text" v-model="BoardQNA.btitle" /></td>
+      <tr class="form-tr">
+        <td colspan="2" class="input-group-text listname">내용</td>
       </tr>
-      <tr>
-        <td colspan="2">내용</td>
-      </tr>
-      <tr>
-        <td>
-          <textarea rows="10" cols="60" v-model="BoardQNA.bcontent"></textarea>
+      <tr class="form-tr">
+        <td colspan="2">
+          <textarea rows="10" cols="60" class="form-control" v-model="BoardQNA.bcontent"></textarea>
         </td>
       </tr>
-      <tr>
-        <td><input type="hidden" v-model="BoardQNA.regdate" /></td>
+      <tr class="form-tr">
+        <td colspan=2><input type="hidden" v-model="BoardQNA.regdate" /></td>
       </tr>
     </table>
 
@@ -59,4 +57,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form-tr{
+  margin-bottom : 10px;
+}
+.inputname{
+  width:100%;
+}
+</style>
