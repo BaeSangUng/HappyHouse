@@ -17,6 +17,10 @@ import Login from "../views/member/Login.vue";
 import JoinForm from "../views/member/JoinForm.vue";
 import LoginForm from "../views/member/LoginForm.vue";
 import UpdateForm from "../views/member/UpdateForm.vue";
+import LoginModal from "../views/member/LoginModal.vue";
+import JoinModal from "../views/member/JoinModal.vue";
+import UpdateModal from "../views/member/UpdateModal.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -89,7 +93,22 @@ const routes = [
     path: "/happyhouse/updateForm",
     name: "UpdateForm",
     component: UpdateForm
-  }
+  },
+  {
+    path: "/happyhouse/loginModal",
+    name: "LoginModal",
+    component: LoginModal
+  },
+  {
+    path: "/happyhouse/joinModal",
+    name: "JoinModal",
+    component: JoinModal
+  },
+  {
+    path: "/happyhouse/updateModal",
+    name: "UpdateModal",
+    component: UpdateModal
+  },
 ];
 
 const router = new VueRouter({
