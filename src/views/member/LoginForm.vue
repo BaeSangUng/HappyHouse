@@ -18,30 +18,29 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
+  name: 'Login',
   data() {
     return {
-      userid: '',
-      userpw: '',
+      user: {
+        userid: '',
+        userpw: '',
+        username: '',
+      },
+      message: '',
     };
+  },
+  computed: {
+    nextRoute() {
+      return this.$route.params.nextRoute ? this.$route.params.nextRoute : '';
+    },
   },
   methods: {
     login() {
-      axios
-        .get('http://localhost:8000/happyhouse/member/select/' + this.userid)
-        .then((response) => {
-          console.log(response.data);
-          if (response.data == this.userpw && response.data != '' && response.data != null) {
-            alert('성공');
-          } else {
-            alert('실패');
-          }
-        })
-        .catch((except) => {
-          alert(except);
-        });
+      this.$store
+        .dispatch('LOGIN', this.user)
+        .then(() => this.$router.replace(`/${this.nextRoute}`))
+        .catch(({ message }) => (this.msg = message));
     },
   },
 };

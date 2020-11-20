@@ -1,37 +1,55 @@
 <template>
   <div id="app" class="container-fluid">
     <div class="navbar">
-      <img id="logo" src="@/assets/logo.jpg">
+      <img id="logo" src="@/assets/logo.jpg" />
       <b-nav tabs>
-          <b-nav-item :active="tab==1" @click="changetab(1)" href="/">
-            Home
-          </b-nav-item>
-          <b-nav-item :active="tab==2" @click="changetab(2)" href="/happyhouse/HelpDesk">
-           HelpDesk
-          </b-nav-item>
-          <b-nav-item :active="tab==3" @click="changetab(3)" href="/happyhouse/login">
-          login
-          </b-nav-item>
+        <b-nav-item :active="tab == 1" @click="changetab(1)" href="/">
+          Home
+        </b-nav-item>
+        <b-nav-item :active="tab == 2" @click="changetab(2)" href="/happyhouse/HelpDesk">
+          HelpDesk
+        </b-nav-item>
+
+        <b-nav-item>
+          <div v-if="getAccessToken">
+            <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
+            {{ getUserName }}({{ getUserId }})님 환영합니다. |
+            <router-link to="/me">내정보보기</router-link> |
+            <a @click.prevent="onClickLogout">로그아웃</a>
+          </div>
+
+          <div v-else>
+            <router-link to="/happyhouse/loginModal">로그인</router-link> |
+            <router-link to="/join">회원가입</router-link>
+          </div>
+        </b-nav-item>
       </b-nav>
     </div>
     <router-view />
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
-      tab : '',
-    }
+      tab: '',
+      isLogin: false,
+    };
   },
-  
+  computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
+  },
   methods: {
-    changtab(num){
-      this.tab= num;
-      
-    }
+    changtab(num) {
+      this.tab = num;
+    },
+    onClickLogout() {
+      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+    },
   },
-}
+};
 </script>
 <style>
 #app {
@@ -45,30 +63,29 @@ export default {
   padding: 0;
 }
 .navbar {
-  width:100%;
+  width: 100%;
   position: fixed;
-
 }
 #logo {
-  width:80px;
+  width: 80px;
   height: 80px;
 }
-.emptyspace{
-  height:200px;
+.emptyspace {
+  height: 200px;
 }
-#banner{
-  height:200px;
+#banner {
+  height: 200px;
   position: relative;
-  width:100%;
+  width: 100%;
 }
-#searchinput{
-  position :relative;
-  width:40%;
-  display:inline-block;
-}
-#searchbtn{
+#searchinput {
   position: relative;
-  display : inline-block;
+  width: 40%;
+  display: inline-block;
+}
+#searchbtn {
+  position: relative;
+  display: inline-block;
 }
 .col {
   background: grey;
