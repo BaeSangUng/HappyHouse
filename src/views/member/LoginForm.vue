@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <button @click="login">로그인</button>
-        <button @click="$emit('close')">취소</button>
+        <button @click="cancel">취소</button>
       </tr>
     </table>
   </div>
@@ -30,6 +30,7 @@ export default {
         username: '',
       },
       message: '',
+      flag: false,
     };
   },
   computed: {
@@ -44,17 +45,24 @@ export default {
         .dispatch('LOGIN', this.user)
         .then(() => this.$router.replace(`/${this.nextRoute}`))
         .catch(({ message }) => (this.msg = message));
-      console.log(this.$store.state.userId);
-      if (this.$store.getAccessToken != null) {
-        alert('Login Success');
-        this.$router.push('/happyhouse');
+
+      setTimeout(() => {
+        this.check();
+      }, 10);
+    },
+    check() {
+      if (this.$store.state.accessToken != null) {
+        alert('로그인에 성공했습니다!');
+        this.$emit('close');
+        this.$router.push('/');
       } else {
-        alert('Login Failed');
+        alert('로그인에 실패했습니다..');
       }
     },
     cancel() {
+      console.log(this.$store.state.accessToken);
       this.$emit('close');
-      this.$router.push('/happyhouse');
+      this.$router.push('/');
     },
   },
 };

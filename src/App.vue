@@ -14,7 +14,7 @@
           <div v-if="getAccessToken">
             <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
             {{ getUserName }}({{ getUserId }})님 환영합니다. |
-            <router-link to="/me">내정보보기</router-link> |
+            <router-link to="/me">내 정보</router-link> |
             <a @click.prevent="onClickLogout">로그아웃</a>
           </div>
 
