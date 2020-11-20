@@ -1,27 +1,25 @@
 <template>
   <div>
-    <table>
+    <table class="table">
       <tr>
         <td>작성자</td>
-        <td></td>
+        <td ></td>
       </tr>
       <tr>
-        <td colspan="2">제목</td>
-      </tr>
-      <tr>
-        <td colspan="2"><input type="text" v-model="board.btitle" /></td>
+        <td>제목</td>
+        <td><input type="text" class="form-control inputname" v-model="board.btitle" /></td>
       </tr>
       <tr>
         <td colspan="2">내용</td>
       </tr>
       <tr>
-        <td>
-          <textarea rows="10" cols="60" v-model="board.bcontent"></textarea>
+        <td colspan="2">
+          <textarea class="form-control" rows="10" cols="60" v-model="board.bcontent"></textarea>
         </td>
       </tr>
     </table>
 
-    <button @click="send">수정</button>
+    <button @click="send" class="btn btn-info">수정</button>
   </div>
 </template>
 
@@ -69,4 +67,7 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.inputname{
+  width:100%;
+}</style>

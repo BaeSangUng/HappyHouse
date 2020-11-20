@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <router-view /> -->
-    
+    <div class="emptyspace"></div>    
     <div class="row">
       <!-- 왼쪽 사이드 -->
       <div class="col">
@@ -29,4 +28,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.emptyspace{
+  height:100px;
+
+}</style>

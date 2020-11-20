@@ -19,7 +19,7 @@
         <td>{{ item.regdate }}</td>
       </tr>
     </table>
-    <router-link to="create">글쓰기</router-link>
+    <router-link to="create" class="btn btn-primary">글쓰기</router-link>
   </div>
 </template>
 

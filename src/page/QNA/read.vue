@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>hihi</p>
-    <table>
+    <table class="table">
       <tr>
         <th>번호</th>
         <td>{{ board.bno }}</td>
@@ -22,8 +21,8 @@
       </tr>
     </table>
 
-    <button v-on:click="deleteQNA">삭제</button>
-    <button @click="update">수정></button>
+    <button v-on:click="deleteQNA" class="btn btn-danger">삭제</button>
+    <button @click="update" class="btn btn-info">수정></button>
   </div>
 </template>
 
