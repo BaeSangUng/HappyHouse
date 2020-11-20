@@ -3,11 +3,11 @@
     <table>
       <tr>
         <td>ID :</td>
-        <td><input type="text" v-model="userid" /></td>
+        <td><input type="text" v-model="user.userid" /></td>
       </tr>
       <tr>
         <td>PW :</td>
-        <td><input type="password" v-model="userpw" /></td>
+        <td><input type="password" v-model="user.userpw" /></td>
       </tr>
       <tr>
         <button @click="login">로그인</button>
@@ -37,6 +37,7 @@ export default {
   },
   methods: {
     login() {
+      console.log(this.user);
       this.$store
         .dispatch('LOGIN', this.user)
         .then(() => this.$router.replace(`/${this.nextRoute}`))

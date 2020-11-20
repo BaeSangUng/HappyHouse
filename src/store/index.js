@@ -4,7 +4,7 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+const SERVER_URL = "http://localhost:8000/happyhouse";
 
 export default new Vuex.Store({
   state: {
@@ -43,13 +43,13 @@ export default new Vuex.Store({
   },
   actions: {
     LOGIN(context, user) {
+      console.log(user);
       return axios
-        .post(`${SERVER_URL}/happyhouse/member/select/`+ user)
+        .post(`${SERVER_URL}/member/select/`, user)
         .then((response) => {
           context.commit("LOGIN", response.data);
-          axios.defaults.headers.common[
-            "auth-token"
-          ] = `${response.data["auth-token"]}`;
+          axios.defaults.headers.common["auth-token"] = `${response.data["auth-token"]}`;
+          console.log(response);
         });
     },
     LOGOUT(context) {
