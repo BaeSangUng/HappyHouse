@@ -1,6 +1,7 @@
 <template>
   <div>
-    <table>
+    <table class="table table-striped">
+
       <tr>
         <td>번호</td>
         <td>제목</td>
@@ -18,7 +19,6 @@
         <td>{{ item.regdate }}</td>
       </tr>
     </table>
-
     <router-link to="create">글쓰기</router-link>
   </div>
 </template>
@@ -28,6 +28,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      fields:['번호', '제목', '작성자', '날짜'],
       items: [],
     };
   },
@@ -35,8 +36,10 @@ export default {
     axios
       .get('http://localhost:8000/happyhouse/qna/read')
       .then((response) => {
-        {
+        { 
+
           this.items = response.data;
+          console.log(this.items);
         }
       })
       .catch((ex) => {

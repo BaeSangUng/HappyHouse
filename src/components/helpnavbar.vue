@@ -1,7 +1,9 @@
 <template>
   <div>
-    <router-link to="/happyhouse/HelpDesk/QNA/list">QNA</router-link>
-    <router-link to="/happyhouse/HelpDesk/Notice">Notice</router-link>
+    <b-nav vertical>
+      <b-nav-item href="/happyhouse/HelpDesk/QNA/list">QNA</b-nav-item>
+      <b-nav-item href="/happyhouse/HelpDesk/Notice">Notice</b-nav-item>
+    </b-nav>
   </div>
 </template>
 
