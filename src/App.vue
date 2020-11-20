@@ -3,49 +3,34 @@
     <div class="navbar">
       <img id="logo" src="@/assets/logo.jpg">
       <b-nav tabs>
-          <b-nav-item :active="tab===1" @click="tab=1, showbanner=true" class="navitem">
-            <b-link to="/" class="navbutton">Home</b-link>
+          <b-nav-item :active="tab==1" @click="changetab(1)" href="/">
+            Home
           </b-nav-item>
-          <b-nav-item :active="tab===2" @click="tab=2, showbanner=false" class="navitem">
-            <b-link to="/happyhouse/HelpDesk" class="navbutton">HelpDesk</b-link>
+          <b-nav-item :active="tab==2" @click="changetab(2)" href="/happyhouse/HelpDesk">
+           HelpDesk
           </b-nav-item>
-          <b-nav-item :active="tab===3" @click="tab=3, showbanner=false" class="navitem">
-            <b-link to="/happyhouse/login" class="navbutton">login</b-link>
+          <b-nav-item :active="tab==3" @click="changetab(3)" href="/happyhouse/login">
+          login
           </b-nav-item>
       </b-nav>
     </div>
-    <div class="banner" v-show="showbanner">
-      <div class="emptyspace"></div>
-      <div id="banner">
-        <h2>당신이 원하는 집을 검색</h2>
-        <b-form-input id="searchinput"></b-form-input> <b-button id="searchbtn" variant="success">Success</b-button>
-      </div>
-    </div>
-    <div class="row">
-      <!-- 왼쪽 사이드 -->
-      <div class="col">
-      </div>
-
-      <!-- 중간 -->
-      <div class="col-8">
-        <router-view />
-      </div>
-
-      <!-- 오른쪽 사이드 -->
-      <div class="col">
-        
-      </div>
-    </div>
+    <router-view />
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      tab : 1,
-      showbanner : true,
+      tab : '',
     }
-  }
+  },
+  
+  methods: {
+    changtab(num){
+      this.tab= num;
+      
+    }
+  },
 }
 </script>
 <style>
@@ -63,11 +48,6 @@ export default {
   width:100%;
   position: fixed;
 
-}
-.navbutton{
-  width:100%;
-  height:100%;
-  padding:0;
 }
 #logo {
   width:80px;
