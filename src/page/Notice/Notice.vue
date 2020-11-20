@@ -1,6 +1,7 @@
 <template>
   <div>
-    Notice Page 임돠
+    <h2>Notice</h2>
+    <router-view/>
   </div>
 </template>
 
