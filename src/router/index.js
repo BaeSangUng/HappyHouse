@@ -13,6 +13,7 @@ import QNADelete from "@/page/QNA/delete.vue";
 
 import Notice from "@/page/Notice/Notice.vue";
 import NoticeList from "@/page/Notice/list.vue";
+import NoticeRead from "@/page/Notice/read.vue";
 
 import Login from "../views/member/Login.vue";
 import JoinForm from "../views/member/JoinForm.vue";
@@ -28,7 +29,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/happyhouse/HelpDesk",
@@ -76,8 +77,13 @@ const routes = [
         children: [
           {
             path: "list",
-            name: "list",
+            name: "nlist",
             component: NoticeList
+          },
+          {
+            path: "read",
+            name: "nread",
+            component: NoticeRead
           },
         ]
       }

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p>hihi</p>
-    <table>
+    <table class="table">
       <tr>
         <th>번호</th>
         <td>{{ board.bno }}</td>
@@ -28,52 +27,17 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   data() {
     return {
       board: {
-        bno: 0,
-        btitle: '',
-        bwriter: '',
-        bcontent: '',
-        regdate: '',
+        bno: 3,
+        btitle: '투자 1000억대 돌파 되었습니다!.',
+        bwriter: 'admin',
+        bcontent: '내일 다방 인수 들어갑니다.',
+        regdate: '2020-11-20',
       },
     };
-  },
-  created() {
-    axios
-      .get(
-        'http://localhost:8000/happyhouse/rest/detail/' + this.$route.params.bno
-      )
-      .then((response) => {
-        console.log(response.data);
-        this.board = response.data;
-      })
-      .catch((ex) => {
-        console.log(ex);
-      });
-  },
-  methods: {
-    deleteQNA() {
-      axios
-        .delete(
-          'http://localhost:8000/happyhouse/rest/delete/' + this.board.bno
-        )
-        .then((response) => {
-          console.log(response);
-          // window.location.href = 'happyhouse/qna';
-          this.$router.push('/happyhouse/qna');
-        })
-        .catch((ex) => {
-          console.log(ex);
-        });
-    },
-    update() {
-      this.$router.push({
-        path: '/happyhouse/update/' + this.board.bno,
-      });
-    },
   },
 };
 </script>
