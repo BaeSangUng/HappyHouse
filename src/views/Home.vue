@@ -3,9 +3,11 @@
     <div class="banner">
       <div class="emptyspace"></div>
       <div id="banner">
-        <h2>당신이 원하는 집을 검색</h2>
+        <h2 id="bannerContent">당신이 원하는 집을 검색</h2>
+        <p>ex) 서울특별시 / 중구 / 사직동 / etc..</p>
+
         <b-form-input id="searchinput"></b-form-input>
-        <b-button id="searchbtn" variant="success">Success</b-button>
+        <b-button id="searchbtn" variant="success">Search</b-button>
       </div>
     </div>
 
@@ -40,3 +42,17 @@ export default {
   },
 };
 </script>
+
+<style>
+#bannerContent {
+  color: cornsilk;
+}
+#banner p {
+  color: grey;
+}
+.banner {
+  position: relative;
+  z-index: 1;
+  background-image: url('../assets/main직접.jpg');
+}
+</style>
