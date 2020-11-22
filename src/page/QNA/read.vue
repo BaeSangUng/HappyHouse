@@ -21,13 +21,16 @@
       </tr>
     </table>
 
-    <button v-on:click="deleteQNA" class="btn btn-danger">삭제</button>
-    <button @click="update" class="btn btn-info">수정></button>
+    <div v-show="currentUserSameWithWriter">
+      <button v-on:click="deleteQNA" class="btn btn-danger">삭제</button>
+      <button @click="update" class="btn btn-info">수정></button>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -38,9 +41,22 @@ export default {
         bcontent: '',
         regdate: '',
       },
+      currentUserSameWithWriter: false,
     };
   },
+  computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
+  },
   created() {
+    if (
+      sessionStorage.getItem('accessToken') != null &&
+      sessionStorage.getItem('accessToken') != ''
+    ) {
+      this.$store.state.accessToken = sessionStorage.getItem('accessToken');
+      this.$store.state.userId = sessionStorage.getItem('userId');
+      this.$store.state.userPw = sessionStorage.getItem('userPw');
+      this.$store.state.userName = sessionStorage.getItem('userName');
+    }
     axios
       .get(
         'http://localhost:8000/happyhouse/qna/detail/' + this.$route.params.bno
@@ -48,6 +64,9 @@ export default {
       .then((response) => {
         console.log(response.data);
         this.board = response.data;
+        if (this.$store.state.userId == this.board.bwriter) {
+          this.currentUserSameWithWriter = true;
+        }
       })
       .catch((ex) => {
         console.log(ex);
