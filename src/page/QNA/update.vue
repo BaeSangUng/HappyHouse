@@ -3,18 +3,31 @@
     <table class="table">
       <tr>
         <td>작성자</td>
-        <td ></td>
+        <td>
+          <input type="text" v-model="board.bwriter" disabled id="nameform" />
+        </td>
       </tr>
       <tr>
         <td>제목</td>
-        <td><input type="text" class="form-control inputname" v-model="board.btitle" /></td>
+        <td>
+          <input
+            type="text"
+            class="form-control inputname"
+            v-model="board.btitle"
+          />
+        </td>
       </tr>
       <tr>
         <td colspan="2">내용</td>
       </tr>
       <tr>
         <td colspan="2">
-          <textarea class="form-control" rows="10" cols="60" v-model="board.bcontent"></textarea>
+          <textarea
+            class="form-control"
+            rows="10"
+            cols="60"
+            v-model="board.bcontent"
+          ></textarea>
         </td>
       </tr>
     </table>
@@ -25,18 +38,22 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
       board: {
         bno: '',
         btitle: '',
-        bwriter: 'ssafy',
+        bwriter: '',
         bcontent: '',
         regdate: '',
       },
       bno: '',
     };
+  },
+  computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
   },
   beforeCreate() {
     this.bno = this.$route.params.bno;
@@ -50,6 +67,18 @@ export default {
         console.log(ex);
       });
   },
+  created() {
+    if (
+      sessionStorage.getItem('accessToken') != null &&
+      sessionStorage.getItem('accessToken') != ''
+    ) {
+      this.$store.state.accessToken = sessionStorage.getItem('accessToken');
+      this.$store.state.userId = sessionStorage.getItem('userId');
+      this.$store.state.userPw = sessionStorage.getItem('userPw');
+      this.$store.state.userName = sessionStorage.getItem('userName');
+    }
+  },
+
   methods: {
     send() {
       axios
@@ -68,6 +97,10 @@ export default {
 </script>
 
 <style>
-.inputname{
-  width:100%;
-}</style>
+.inputname {
+  width: 100%;
+}
+#nameform {
+  width: 100%;
+}
+</style>
