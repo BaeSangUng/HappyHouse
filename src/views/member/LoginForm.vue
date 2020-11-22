@@ -48,7 +48,7 @@ export default {
 
       setTimeout(() => {
         this.check();
-      }, 10);
+      }, 50);
     },
     check() {
       if (this.$store.state.accessToken != null) {
