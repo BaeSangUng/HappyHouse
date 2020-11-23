@@ -43,6 +43,15 @@ export default {
         .put('http://localhost:8000/happyhouse/member/update', this.user)
         .then((response) => {
           console.log(response.data);
+          if (response.data >= 1) {
+            this.$store.state.userPw = this.user.userpw;
+            this.$store.state.userName = this.user.username;
+            alert('회원정보 수정에 성공했습니다!');
+            this.$emit('close');
+            this.$router.push('/');
+          } else {
+            alert('회원정보 수정에 실패했습니다..');
+          }
         })
         .catch((ex) => {
           console.log(ex);
@@ -50,13 +59,26 @@ export default {
     },
     del() {
       axios
-        .delete('http://localhost:8000/happyhouse/member/delete', this.user.userid)
+        .post('http://localhost:8000/happyhouse/member/delete', this.user.userid)
         .then((response) => {
           console.log(response.data);
+          if (response.data >= 1) {
+            
+            alert('회원정보 삭제에 성공했습니다!');
+            this.$emit('close');
+            this.onClickLogout();
+           
+          } else {
+            alert('회원정보 삭제에 실패했습니다..');
+          }
         })
         .catch((ex) => {
           console.log(ex);
         });
+
+    },
+    onClickLogout() {
+      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
     },
   },
 };
