@@ -17,10 +17,10 @@
 
       <!-- 중간 -->
       <!-- <div> -->
-      <div class="ingichart">
+      <div class="col ingichart">
         <ingichart />
       </div>
-      <div class="miniNotice">
+      <div class="col miniNotice">
         <miniNotice />
       </div>
       <!-- </div> -->

@@ -13,7 +13,7 @@
       </li>
     </ul>
 
-    <button v-model="heart" @click="jjim">{{ heart }}</button>
+    <input type="text" v-model="heart" @click="jjim" />
   </div>
 </template>
 
@@ -61,23 +61,34 @@ export default {
   },
   methods: {
     jjim() {
-        if(sessionStorage.getItem('accessToken') != null &&
-      sessionStorage.getItem('accessToken') != ''){
-          this.$router.push("/happyhouse/loginModal");
+      if (
+        sessionStorage.getItem('accessToken') != null &&
+        sessionStorage.getItem('accessToken') != ''
+      ) {
+        this.$router.push('/happyhouse/loginModal');
       }
-        var temp = {
-          num: this.apt.일련번호,
-          userId: this.$store.state.userId,
-        };
+      var temp = {
+        num: this.apt.일련번호,
+        userId: this.$store.state.userId,
+      };
       if (this.heart == '♥') {
-        axios.delete('url', temp).then(()=>{
+        axios
+          .delete('url', temp)
+          .then(() => {
             this.heart = '♡';
-        }).catch(()=>alert("delete error"););
-      }
-      else{
-        axios.post('url', temp).then(()=>{
+          })
+          .catch(() => {
+            alert('delete error');
+          });
+      } else {
+        axios
+          .post('url', temp)
+          .then(() => {
             this.heart = '♥';
-        }).catch(()=>alert("post error"););
+          })
+          .catch(() => {
+            alert('post error');
+          });
       }
     },
   },
