@@ -61,6 +61,10 @@ export default {
   },
   methods: {
     jjim() {
+        if(sessionStorage.getItem('accessToken') != null &&
+      sessionStorage.getItem('accessToken') != ''){
+          this.$router.push("/happyhouse/loginModal");
+      }
         var temp = {
           num: this.apt.일련번호,
           userId: this.$store.state.userId,
