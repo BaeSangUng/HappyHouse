@@ -1,16 +1,47 @@
 <template>
   <b-row>
     <b-col align="left">
-      <select class="browser-default custom-select">
-        <option selected></option>
-        <option value="1">One</option>
+      <select
+        v-model="sidocode"
+        @change="onchange1()"
+        class="browser-default custom-select"
+      >
+        <option selected disabled>시/도</option>
+        <option
+          v-for="(item, index) in sidos"
+          :value="item.sido_code"
+          :key="index"
+          >{{ item.sido_name }}</option
+        >
       </select>
-      <b-form-select v-model="sido" :options="sidos"></b-form-select>
-      <div class="mt-3">Selected: {{ sido.sido_name }}</div>
-      <b-form-select v-model="gugun" :options="guguns"></b-form-select>
-      <div class="mt-3">Selected: {{ gugun }}</div>
-      <b-form-select v-model="dong" :options="dongs"></b-form-select>
-      <div class="mt-3">Selected: {{ dong }}</div>
+
+      <select
+        v-model="guguncode"
+        @change="onchange2()"
+        class="browser-default custom-select"
+      >
+        <option selected disabled>구/군</option>
+        <option
+          v-for="(item, index) in guguns"
+          :value="item.gugun_code"
+          :key="index"
+          >{{ item.gugun_name }}</option
+        >
+      </select>
+
+      <select
+        v-model="dongcode"
+        @change="onchange3()"
+        class="browser-default custom-select"
+      >
+        <option selected disabled>동/읍</option>
+        <option
+          v-for="(item, index) in dongs"
+          :value="item.dong_code"
+          :key="index"
+          >{{ item.dong_name }}</option
+        >
+      </select>
     </b-col>
   </b-row>
 </template>
@@ -28,14 +59,15 @@ export default {
       sido: '',
       sidocode: '',
       gugun: '',
+      guguncode: '',
       dong: '',
       dongcode: '',
       aptname: '',
     };
   },
-  watch: {
-    sidocode: function() {
-      console.log(this.sido);
+  methods: {
+    onchange1() {
+      console.log(this.sidocode);
       axios
         .post('http://localhost:8000/happyhouse/map/gugun', this.sidocode)
         .then((response) => {
@@ -45,26 +77,20 @@ export default {
           alert('gugun error');
         });
     },
-    gugun: function() {
+    onchange2() {
+      console.log(this.guguncode);
       axios
-        .post('http://localhost:8000/happyhouse/map/dong')
+        .post('http://localhost:8000/happyhouse/map/dong', this.guguncode)
         .then((response) => {
           this.dongs = response.data;
+          console.log(this.dongs);
         })
         .catch(() => {
           alert('dongs error');
         });
     },
-    dong: function() {
-      axios
-        .get('url')
-        .then((response) => {
-          this.dongcode = response.data;
-          this.$emit('send-dong-code', this.dongCode);
-        })
-        .catch(() => {
-          alert('dongcode error');
-        });
+    onchange3() {
+      this.$emit('send-dong-code', this.dongcode);
     },
   },
   created() {
