@@ -46,7 +46,7 @@
       <div class="col">
         <div>
           <gmap-map :center="center" :zoom="12" style="width=100%;  height:600px;" >
-           <gmap-marker :key="index" v-for="(m, index) in changedMarkers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
+           <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
           </gmap-map>
         </div>
       </div>
@@ -146,6 +146,7 @@ export default {
           var temp = {lat : response.data.results[0].geometry.location.lat, lng : response.data.results[0].geometry.location.lng};
           this.position.push(temp);
           this.addMarker(temp);
+          console.log(response.data);
         })
         .catch((ex)=>{
           console.log("error : " + ex);
@@ -164,7 +165,7 @@ export default {
     },
     addMarker(position) {
       if (position) {
-        this.markers.push(position);
+        this.markers.push({position : position});
         this.places.push(this.currentPlace);
         this.center = position;
         this.currentPlace = null;
@@ -174,7 +175,7 @@ export default {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longritude
         };
         this.markers.push({
           position: { 
