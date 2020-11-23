@@ -40,13 +40,21 @@
       </b-nav>
     </div>
     <router-view />
-    
+
+      <div class="footer">
+        <footer />
+      </div>
+      
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import footer from "../views/Footer.vue";
 
 export default {
+  components : {
+    footer
+  },
   data() {
     return {
       tab: '',
