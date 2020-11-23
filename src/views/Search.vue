@@ -93,6 +93,7 @@ export default {
       this.showaptsList = [];
       if (this.apt == '') {
         this.showaptsList = this.apts;
+
         console.log('아파트검색없음');
         console.log(this.showaptsList);
       } else {
