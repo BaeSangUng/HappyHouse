@@ -3,6 +3,13 @@
     <div class="emptyspace"></div>
     <div class="row">
       <SearchBar @send-dong-code="sendDongCode" />
+      <div>
+        가격 : <input type="range" id="pricerange" min="0" max="3000000" step="10" v-model="limit_price">
+              <input type="text" v-model="limit_price"> 이하<br>
+        면적 : <input type="range" id="widthrange" min="0" max="200" step="10" v-model="limit_width">
+              <input type="text" v-model="limit_width"> 이하<br>
+      </div>
+
       <input
         type="text"
         v-if="sendDongCode != null"
@@ -39,7 +46,7 @@
       <div class="col">
         <div>
           <gmap-map :center="center" :zoom="12" style="width=100%;  height:600px;" >
-           <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
+           <gmap-marker :key="index" v-for="(m, index) in changedMarkers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
           </gmap-map>
         </div>
       </div>
@@ -68,6 +75,10 @@ export default {
       apt: '',
       position:[],
 
+      limit_price:'3000000',
+      limit_width:'200',
+
+
       center: { lat: 37.5665734, lng: 126.978179 },
       zoom: "18",
       markers: [],
@@ -77,6 +88,11 @@ export default {
   },
   mounted() {
     this.geolocate();
+  },
+  computed : {
+    changedMarkers :function() {
+      return this.markers;
+    }
   },
   methods: {
     sendDongCode: function(dongCode) {
@@ -109,8 +125,10 @@ export default {
         for (var i = 0; i < this.aptsSize; i++) {
           if (this.apts[i].아파트.search(this.apt) != -1){
             if(this.apts[i].법정동읍면동코드 == this.dongCode.substring(5, 10)){
-              console.log(this.apts[i].법정동읍면동코드);
-              this.showaptsList.push(this.apts[i]);
+              if(this.apts[i].거래금액 <= this.limit_price && this.apts[i].전용면적 <=this.limit_width){
+                console.log(this.apts[i]);
+                this.showaptsList.push(this.apts[i]);
+              }
             } 
           }
         }
