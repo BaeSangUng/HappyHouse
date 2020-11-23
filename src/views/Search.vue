@@ -81,6 +81,7 @@ export default {
   methods: {
     sendDongCode: function(dongCode) {
       this.gugunCode = dongCode.substring(0, 5);
+      this.dongCode = dongCode;
 
       const API_KEY =
         '1MZ0TOc4Xr6XKhh%2BHxJrZHki%2FNIfZVcYNEolqWsmM3aByjhJbdjgHhmWeJUavM8wEjAZyMSoq3lZI9xYtHq3CQ%3D%3D';
@@ -96,7 +97,6 @@ export default {
           this.apts = response.data.response.body.items.item;
           console.log(this.apts); //apt list
           this.aptsSize = response.data.response.body.numOfRows;
-          console.log(this.aptsSize);
         })
         .catch((error) => {
           console.log(error);
@@ -105,17 +105,15 @@ export default {
     searchByAptName: function() {
       // console.log(this.apts);
       this.showaptsList = [];
-
-      if (this.apt == '') {
-        this.showaptsList = this.apts;
-      } 
-      else {
+      console.log(this.apts);
         for (var i = 0; i < this.aptsSize; i++) {
-          if (this.apts[i].아파트.search(this.apt) != -1)
-            this.showaptsList.push(this.apts[i]);
+          if (this.apts[i].아파트.search(this.apt) != -1){
+            if(this.apts[i].법정동읍면동코드 == this.dongCode.substring(5, 10)){
+              console.log(this.apts[i].법정동읍면동코드);
+              this.showaptsList.push(this.apts[i]);
+            } 
+          }
         }
-      }
-
 
       this.position = [];
       for(var j = 0; j < this.showaptsList.length; j++){
@@ -128,7 +126,6 @@ export default {
         .then((response)=>{
           var temp = {lat : response.data.results[0].geometry.location.lat, lng : response.data.results[0].geometry.location.lng};
           this.position.push(temp);
-          console.log(this.position);
           this.addMarker(temp);
         })
         .catch((ex)=>{
