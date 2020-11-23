@@ -24,6 +24,7 @@ import UpdateForm from "../views/member/UpdateForm.vue";
 import LoginModal from "../views/member/LoginModal.vue";
 import JoinModal from "../views/member/JoinModal.vue";
 import UpdateModal from "../views/member/UpdateModal.vue";
+import Map from "../views/map/Map.vue";
 
 Vue.use(VueRouter);
 
@@ -130,6 +131,11 @@ const routes = [
     path: "/happyhouse/Search",
     name: "Search",
     component: Search
+  },
+  {
+    path: "/happyhouse/map",
+    name: "Map",
+    component: Map
   },
 ];
 
