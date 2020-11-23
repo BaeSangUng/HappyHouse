@@ -128,17 +128,15 @@ export default {
         .then((response)=>{
           var temp = {lat : response.data.results[0].geometry.location.lat, lng : response.data.results[0].geometry.location.lng};
           this.position.push(temp);
+          console.log(this.position);
+          this.addMarker(temp);
         })
         .catch((ex)=>{
           console.log("error : " + ex);
         });
       }
 
-      //포지션들을 모두 맵에 표현
-      for(var l = 0; this.position.length; l++){
-        console.log(this.position[l]);
-        this.addMarker(this.position[l]);
-      }
+    console.log(this.markers);
 
     },
     selectApt: function(apt) {
