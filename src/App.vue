@@ -6,13 +6,26 @@
         <b-nav-item :active="tab == 1" @click="changetab(1)" href="/">
           Home
         </b-nav-item>
-        <b-nav-item :active="tab == 2" @click="changetab(2)" href="/happyhouse/HelpDesk">
+        <b-nav-item
+          :active="tab == 2"
+          @click="changetab(2)"
+          href="/happyhouse/Search"
+        >
+          Search
+        </b-nav-item>
+        <b-nav-item
+          :active="tab == 3"
+          @click="changetab(3)"
+          href="/happyhouse/HelpDesk"
+        >
           HelpDesk
         </b-nav-item>
-
         <b-nav-item>
           <div v-if="getAccessToken">
-            <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
+            <b-avatar
+              variant="primary"
+              v-text="getUserId.charAt(0).toUpperCase()"
+            ></b-avatar>
             {{ getUserName }}({{ getUserId }})님 환영합니다. |
             <router-link to="/happyhouse/updateModal">내 정보</router-link> |
             <a @click.prevent="onClickLogout">로그아웃</a>
@@ -45,7 +58,9 @@ export default {
       this.tab = num;
     },
     onClickLogout() {
-      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+      this.$store
+        .dispatch('LOGOUT')
+        .then(() => this.$router.replace('/').catch(() => {}));
     },
   },
   created() {

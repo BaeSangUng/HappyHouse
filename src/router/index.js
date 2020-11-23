@@ -4,6 +4,8 @@ import Home from "../views/Home.vue";
 
 import HelpDesk from "@/views/HelpDesk.vue";
 
+import Search from "@/views/Search.vue";
+
 import QNA from "@/page/QNA/QNA.vue";
 import QNAList from "@/page/QNA/list.vue";
 import QNACreate from "@/page/QNA/create.vue";
@@ -123,6 +125,11 @@ const routes = [
     path: "/happyhouse/updateModal",
     name: "UpdateModal",
     component: UpdateModal
+  },
+  {
+    path: "/happyhouse/Search",
+    name: "Search",
+    component: Search
   },
 ];
 
