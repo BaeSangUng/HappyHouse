@@ -125,7 +125,8 @@ export default {
         for (var i = 0; i < this.aptsSize; i++) {
           if (this.apts[i].아파트.search(this.apt) != -1){
             if(this.apts[i].법정동읍면동코드 == this.dongCode.substring(5, 10)){
-              if(this.apts[i].거래금액 <= this.limit_price && this.apts[i].전용면적 <=this.limit_width){
+              console.log(parseInt(this.apts[i].거래금액.replace(',','')));
+              if(parseInt(this.apts[i].거래금액.replace(',','')) <= this.limit_price && this.apts[i].전용면적 <=this.limit_width){
                 console.log(this.apts[i]);
                 this.showaptsList.push(this.apts[i]);
               }
