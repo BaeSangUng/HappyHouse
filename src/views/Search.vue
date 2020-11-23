@@ -37,7 +37,11 @@
         </ul>
       </div>
       <div class="col">
-        맵/ 상세정보부분
+        <div>
+          <gmap-map :center="center" :zoom="12" style="width=100%;  height:600px;" >
+           <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
+          </gmap-map>
+        </div>
       </div>
     </div>
   </div>
@@ -62,7 +66,17 @@ export default {
       aptsSize: '',
       showaptsList: [],
       apt: '',
+      position:[],
+
+      center: { lat: 37.5665734, lng: 126.978179 },
+      zoom: "18",
+      markers: [],
+      places: [],
+      currentPlace: null
     };
+  },
+  mounted() {
+    this.geolocate();
   },
   methods: {
     sendDongCode: function(dongCode) {
@@ -91,23 +105,76 @@ export default {
     searchByAptName: function() {
       // console.log(this.apts);
       this.showaptsList = [];
+
       if (this.apt == '') {
         this.showaptsList = this.apts;
-
-        console.log('아파트검색없음');
-        console.log(this.showaptsList);
-      } else {
-        console.log('검색한거 있다');
+      } 
+      else {
         for (var i = 0; i < this.aptsSize; i++) {
           if (this.apts[i].아파트.search(this.apt) != -1)
             this.showaptsList.push(this.apts[i]);
         }
-        console.log(this.showaptsList);
       }
+
+
+      this.position = [];
+      for(var j = 0; j < this.showaptsList.length; j++){
+        var val1 = this.showaptsList[j].도로명;
+        var val2 = this.showaptsList[j].도로명건물본번호코드;
+        val2 = val2.replace(/(^0+)/, "");
+
+        axios
+        .get("https://maps.googleapis.com/maps/api/geocode/json?address=" + val1 + "+" + val2 + "&key=AIzaSyCmBgay0wb9KagZHoyRCc5lbQ_PPdywdfE")
+        .then((response)=>{
+          var temp = {lat : response.data.results[0].geometry.location.lat, lng : response.data.results[0].geometry.location.lng};
+          this.position.push(temp);
+        })
+        .catch((ex)=>{
+          console.log("error : " + ex);
+        });
+      }
+
+      //포지션들을 모두 맵에 표현
+      for(var l = 0; this.position.length; l++){
+        console.log(this.position[l]);
+        this.addMarker(this.position[l]);
+      }
+
     },
     selectApt: function(apt) {
       this.selectedApt = apt;
     },
+
+    setPlace(place) {
+      this.currentPlace = place;
+    },
+    addMarker(position) {
+      if (position) {
+        this.markers.push(position);
+        this.places.push(this.currentPlace);
+        this.center = position;
+        this.currentPlace = null;
+      }
+    },
+    geolocate() {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        this.markers.push({
+          position: { 
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+         },
+        });
+      });
+      
+    },
+    markerClicked(m){
+      this.center=m.position;
+      console.log(m.position);
+    }
   },
 };
 </script>

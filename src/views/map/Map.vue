@@ -1,16 +1,5 @@
 <template>
-<div>
-    <div>
-      <h2>Search and add a pin</h2>
-      <label>
-        <gmap-autocomplete  @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
-      <br/>
-    </div>
-
-    <br>
+  <div>
     <gmap-map :center="center" :zoom="12" style="width:60%;  height: 600px;" >
       <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="markerClicked(m)" ></gmap-marker>
     </gmap-map>
