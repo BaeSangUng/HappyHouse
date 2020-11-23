@@ -41,19 +41,19 @@
     </div>
     <router-view />
 
-      <div class="footer">
-        <footer />
+      <div class="appfooter">
+        <appfooter />
       </div>
-      
+
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import footer from "../views/Footer.vue";
+import appfooter from "@/views/AppFooter.vue";
 
 export default {
   components : {
-    footer
+    appfooter
   },
   data() {
     return {
