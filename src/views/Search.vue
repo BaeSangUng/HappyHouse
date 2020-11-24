@@ -65,7 +65,7 @@
         <div>
           <gmap-map
             :center="center"
-            :zoom="12"
+            :zoom="16"
             style="width=100%;  height:600px;"
           >
             <gmap-marker
