@@ -78,7 +78,7 @@ export default {};
 }
 .minili a {
   text-decoration: none;
-  color: darkslategray;
+  color: black;
 }
 .minili a:link {
   text-decoration: none;

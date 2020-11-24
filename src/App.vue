@@ -1,7 +1,11 @@
 <template>
-  <div id="app" class="container-fluid" style="font-family: 'Noto Sans KR', sans-serif;">
+  <div
+    id="app"
+    class="container-fluid"
+    style="font-family: 'Noto Sans KR', sans-serif;"
+  >
     <div class="navbar">
-      <img id="logo" src="@/assets/logo.jpg" />
+      <img id="logo" src="@/assets/logo.png" />
       <b-nav tabs>
         <b-nav-item :active="tab == 1" @click="changetab(1)" href="/">
           Home
@@ -28,20 +32,20 @@
             ></b-avatar>
             {{ getUserName }}({{ getUserId }})님 환영합니다. |
             <router-link to="/happyhouse/updateModal">내 정보</router-link> |
-            <a @click.prevent="onClickLogout">로그아웃</a> | 
+            <a @click.prevent="onClickLogout">로그아웃</a> |
             <router-link to="/happyhouse/jjim">찜목록 보기</router-link>
           </div>
 
           <div v-else>
             <router-link to="/happyhouse/loginModal">로그인</router-link> |
             <router-link to="/happyhouse/joinModal">회원가입</router-link> |
-
           </div>
         </b-nav-item>
       </b-nav>
     </div>
-    <router-view />
-
+    <div class="bodycontent">
+      <router-view />
+    </div>
     <div class="appfooter">
       <appfooter />
     </div>
@@ -87,22 +91,34 @@ export default {
 };
 </script>
 <style>
+#body {
+  background-color: #f1f6f9;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
 .container-fluid {
   padding: 0;
 }
+.bodycontent {
+  min-height: 1200px;
+  background-color: #f1f6f9;
+}
+.navbar a {
+  color: #14274e;
+  font-size: 20px;
+}
+.navbar a:link {
+  color: #14274e;
+}
 .navbar {
   width: 100%;
   position: fixed;
+  background-color: #f5a25d;
 }
 #logo {
-  width: 80px;
+  width: 260px;
   height: 80px;
 }
 .emptyspace {
@@ -124,5 +140,9 @@ export default {
 }
 .col-8 {
   padding: 0;
+}
+.appfooter {
+  min-height: 300px;
+  background-color: #aee6e6;
 }
 </style>

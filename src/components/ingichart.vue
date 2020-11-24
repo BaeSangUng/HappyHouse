@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ingicontent">
     <div class="emptyspace"></div>
     <span id="ingitext">인기차트</span>
 
@@ -93,6 +93,9 @@ export default {
 </script>
 
 <style>
+.ingicontent {
+  min-height: 1200px;
+}
 #ingitext {
   font-size: 30px;
   font-weight: bold;

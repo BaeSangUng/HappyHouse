@@ -3,8 +3,8 @@
     <div class="banner">
       <div class="emptyspace"></div>
       <div id="banner">
-        <h2 id="bannerContent">당신이 원하는 집을 검색</h2>
-        <p>ex) 서울특별시 / 중구 / 사직동 / etc..</p>
+        <p id="bannerContent">당신이 원하는 집을 검색</p>
+        <p id="bannercontentp">(동이름으로 검색)</p>
 
         <b-form-input
           id="searchinput"
@@ -17,7 +17,17 @@
       </div>
       <div id="searchresult" v-if="showresult">
         <div class="col">
-          검색결과<span id="result">{{ dongcnt }}</span>
+          <div class="row">
+            <div class="col">
+              검색결과
+            </div>
+            <div class="col-6">
+              <span id="result">{{ dongcnt }}</span>
+            </div>
+            <div class="col" @click="closeresult" style="text-align:right;">
+              x
+            </div>
+          </div>
         </div>
         <div class="col">
           <b-button href="happyhouse/search" id="searchdetail"
@@ -69,6 +79,9 @@ export default {
   },
 
   methods: {
+    closeresult() {
+      this.showresult = false;
+    },
     Search() {
       this.dongcnt = 0;
       console.log(this.dongname);
@@ -129,7 +142,13 @@ export default {
 </script>
 
 <style>
+#bannercontentp {
+  color: #f1d4d4;
+  font-size: 21px;
+}
 #bannerContent {
+  font-size: 35px;
+  font-weight: bold;
   color: cornsilk;
 }
 .banner {
@@ -142,8 +161,8 @@ export default {
   display: inline-block;
   position: absolute;
   border-radius: 10px;
-  left: 27%;
-  top: 75%;
+  left: 28%;
+  top: 76%;
   width: 40%;
   height: 100px;
   background-color: white;
