@@ -4,7 +4,7 @@
       <h1 style="padding-left:20%;">매물 상세 검색</h1>
     </div>
     <div class="row">
-      <SearchBar @send-dong-code="sendDongCode"/>
+      <SearchBar @send-dong-code="sendDongCode" />
       <div style="padding:5px; margin:10px;">
         가격 :
         <input
@@ -16,7 +16,11 @@
           v-model="limit_price"
           style="margin-right:5px; width:200px;"
         />
-        <input type="text" v-model="limit_price" style="margin:5px;"/>이하<br />
+        <input
+          type="text"
+          v-model="limit_price"
+          style="margin:5px;"
+        />이하<br />
         면적 :
         <input
           type="range"
@@ -28,7 +32,11 @@
           style="margin-right:5px; width:200px;"
         />
 
-        <input type="text" v-model="limit_width" style="margin:5px;" />이하<br />
+        <input
+          type="text"
+          v-model="limit_width"
+          style="margin:5px;"
+        />이하<br />
       </div>
 
       <input
@@ -37,34 +45,73 @@
         v-on:keyup.enter="searchByAptName"
         style="height:45px; width:20%; margin-top:30px;"
       />
-      <button @click="searchByAptName" style="height:45px; width:5%; margin-top:30px; margin-left:5px;">Search</button>
-
+      <button
+        @click="searchByAptName"
+        style="height:45px; width:5%; margin-top:30px; margin-left:5px;"
+      >
+        Search
+      </button>
     </div>
     <div class="row">
       <div class="col">
-        <ul
+        <b-card
           v-for="(item, index) in showaptsList"
           :key="index"
+          :title="item.hname"
+          tag="article"
+          style="width:300px; height:400px;display:inline-block; padding:0px;"
+          class="mb-2"
           @click="selectApt(item)"
         >
-          <li><img src="@/assets/건물.jpg" alt="건물사진" /></li>
-          <li>
-            {{ item.건축년도 }}
-          </li>
-          <li>
-            {{ item.거래금액 }}
-          </li>
-          <li>
-            {{ item.법정동 }}
-          </li>
-          <li>
-            {{ item.전용면적 }}
-          </li>
-          <li>
-            {{ item.아파트 }}
-          </li>
-        </ul>
-        <div v-if="showaptsList.length<1" style="margin-top:25%;">
+          <b-card-text style="padding:0px; margin:0px;">
+            <ul class="cardul">
+              <li class="litop"></li>
+
+              <li><img src="@/assets/건물.jpg" alt="건물사진" /></li>
+              <li>
+                <div class="row">
+                  <div class="col">건축년도</div>
+                  <div class="col-7">
+                    {{ item.건축년도 }}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col">거래금액</div>
+                  <div class="col-7">
+                    {{ item.거래금액 }}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col">법정동</div>
+                  <div class="col-7">
+                    {{ item.법정동 }}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col">전용면적</div>
+                  <div class="col-7">
+                    {{ item.전용면적 }}
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="row">
+                  <div class="col">아파트명</div>
+                  <div class="col-7">
+                    {{ item.아파트 }}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </b-card-text>
+        </b-card>
+        <div v-if="showaptsList.length < 1" style="margin-top:25%;">
           <h1>검색 결과 없음</h1>
         </div>
       </div>
@@ -122,7 +169,7 @@ export default {
       places: [],
       currentPlace: null,
 
-      flag : false,
+      flag: false,
     };
   },
   mounted() {
@@ -208,10 +255,10 @@ export default {
       console.log(this.markers);
     },
     selectApt: function(apt) {
-      if(this.flag){
+      if (this.flag) {
         this.flag = false;
         this.selectedApt;
-      } else{
+      } else {
         this.flag = true;
       }
       this.selectedApt = apt;
@@ -255,5 +302,8 @@ export default {
 <style>
 .emptyspace {
   height: 100px;
+}
+.litop {
+  height: 20px;
 }
 </style>

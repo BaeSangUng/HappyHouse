@@ -3,12 +3,12 @@
     <h3>{{ apt.아파트 }}</h3>
     <img src="@/assets/건물.jpg" alt="행복 아파트" />
     <div style="margin: 10px"></div>
-    <ul align="left">
-      <li>일련번호 : {{ apt.일련번호 }}</li>
-      <li>아파트 이름 : {{ apt.아파트 }}</li>
-      <li>법정동 : {{ apt.법정동 }}</li>
-      <li>층수 : {{ apt.층 }}층</li>
-      <li>
+    <ul class="detailul">
+      <li class="detailli">일련번호 : {{ apt.일련번호 }}</li>
+      <li class="detailli">아파트 이름 : {{ apt.아파트 }}</li>
+      <li class="detailli">법정동 : {{ apt.법정동 }}</li>
+      <li class="detailli">층수 : {{ apt.층 }}층</li>
+      <li class="detailli">
         거래금액 : {{ (apt.거래금액.replace(',', '') * 10000) | price }}원
       </li>
     </ul>
@@ -25,11 +25,10 @@ export default {
   props: {
     apt: [Object, String],
   },
-  data(){
+  data() {
     return {
       heart: '♡',
-
-    }
+    };
   },
   computed: {
     ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
@@ -56,19 +55,19 @@ export default {
     };
     console.log(temp);
     axios
-    .post('http://localhost:8000/happyhouse/jjim/isJjim', temp)
-    .then((response) => {
-      console.log(response.data);
-      if (response.data) {
-        this.heart = '♥';
-      } else {
-        this.heart = '♡';
-      }
-    })
-    .catch((ex)=>{
-      console.log(temp);
-      console.log(ex);
-    });
+      .post('http://localhost:8000/happyhouse/jjim/isJjim', temp)
+      .then((response) => {
+        console.log(response.data);
+        if (response.data) {
+          this.heart = '♥';
+        } else {
+          this.heart = '♡';
+        }
+      })
+      .catch((ex) => {
+        console.log(temp);
+        console.log(ex);
+      });
   },
   methods: {
     jjim() {
@@ -79,16 +78,16 @@ export default {
         this.$router.push('/happyhouse/loginModal');
       }
       var temp = {
-      userid: this.$store.state.userId,
-      hno: this.apt.일련번호,
+        userid: this.$store.state.userId,
+        hno: this.apt.일련번호,
       };
       var hinfo = {
-        hno : this.apt.일련번호,
-        hname : this.apt.아파트,
-        hdong : this.apt.법정동,
-        hwidth : this.apt.전용면적,
-        hprice : parseInt(this.apt.거래금액.replace(',','')),
-      }
+        hno: this.apt.일련번호,
+        hname: this.apt.아파트,
+        hdong: this.apt.법정동,
+        hwidth: this.apt.전용면적,
+        hprice: parseInt(this.apt.거래금액.replace(',', '')),
+      };
       if (this.heart == '♥') {
         axios
           .post('http://localhost:8000/happyhouse/jjim/delJjim', temp)
@@ -100,7 +99,10 @@ export default {
           });
       } else {
         axios
-          .post('http://localhost:8000/happyhouse/jjim/insertJjim', {jjim : temp, hinfo :  hinfo})
+          .post('http://localhost:8000/happyhouse/jjim/insertJjim', {
+            jjim: temp,
+            hinfo: hinfo,
+          })
           .then(() => {
             this.heart = '♥';
           })
@@ -113,4 +115,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+ul {
+  list-style: none;
+}
+</style>
