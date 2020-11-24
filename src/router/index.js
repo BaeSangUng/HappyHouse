@@ -40,6 +40,7 @@ const routes = [
     path: "/happyhouse/HelpDesk",
     name: "HelpDesk",
     component: HelpDesk,
+    redirect: "/happyhouse/HelpDesk/QNA",
     children: [
       {
         path: "/happyhouse/HelpDesk/QNA",
