@@ -20,7 +20,9 @@
           검색결과<span id="result">{{ dongcnt }}</span>
         </div>
         <div class="col">
-          <b-button id="searchdetail">상세검색 ></b-button>
+          <b-button href="happyhouse/search" id="searchdetail"
+            >상세검색 ></b-button
+          >
         </div>
       </div>
     </div>
@@ -137,6 +139,7 @@ export default {
   background-image: url('../assets/main직접.jpg');
 }
 #searchresult {
+  border: 1px solid black;
   display: inline-block;
   position: absolute;
   border-radius: 10px;
