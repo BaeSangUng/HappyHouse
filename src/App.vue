@@ -6,7 +6,9 @@
     font-size : 20px;"
   >
     <div class="navbar">
-      <img id="logo" src="@/assets/logo.png" />
+      <b-button href="/" style="border : 0px; background:rgba(0, 0, 0, 0);"
+        ><img id="logo" src="@/assets/logo.png"
+      /></b-button>
       <b-nav tabs>
         <b-nav-item :active="tab == 1" @click="changetab(1)" href="/">
           Home
