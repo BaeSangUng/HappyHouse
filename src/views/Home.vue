@@ -28,12 +28,7 @@
     </div>
 
     <div class="row">
-      <!-- 왼쪽 사이드 -->
-      <!-- <div class="col"></div> -->
-
-      <!-- 중간 -->
-      <!-- <div> -->
-      <div class="col ingichart">
+      <div class="col-7 ingichart">
         <ingichart />
       </div>
       <div class="col miniNotice">

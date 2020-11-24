@@ -1,49 +1,43 @@
 <template>
   <div>
-    <div>
-      <table>
-        <tr>
-          <td>
-            <b-card
-              :title="popHouse[0].hname"
-              img-src="@/assets/건물.jpg"
-              img-alt="건물"
-              img-top
-              tag="article"
-              style="max-width: 20rem;"
-              class="mb-2"
-            >
-              <b-card-text>
-                <ul class="cardul">
-                  <li>
-                    동:
-                    {{ popHouse[0].hdong }}
-                  </li>
-                  <li>
-                    가격:
-                    {{ popHouse[0].hprice }}
-                  </li>
-                  <li>
-                    면적:
-                    {{ popHouse[0].hwidth }}
-                  </li>
-                  <li>
-                    좋아요수:
-                    {{ popHouse[0].count }}
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card>
-          </td>
-          <td>{{ popHouse[1] }}</td>
-          <td>{{ popHouse[2] }}</td>
-        </tr>
-        <tr>
-          <td>{{ popHouse[3] }}</td>
-          <td>{{ popHouse[4] }}</td>
-          <td>{{ popHouse[5] }}</td>
-        </tr>
-      </table>
+    <span id="ingitext">인기차트</span>
+
+    <div class="cards">
+      <b-card
+        v-for="(item, index) in popHouse"
+        :key="index"
+        v-if="index < 6"
+        :title="item.hname"
+        :img-src="
+          'https://cdn.pixabay.com/photo/2015/02/24/13/23/city-647400_1280.jpg'
+        "
+        img-alt="건물"
+        img-top
+        tag="article"
+        style="max-width: 20rem; max-height:5rem; display:inline-block; "
+        class="mb-2"
+      >
+        <b-card-text>
+          <ul class="cardul">
+            <li>
+              동
+              {{ item.hdong }}
+            </li>
+            <li>
+              가격
+              {{ item.hprice }}
+            </li>
+            <li>
+              면적
+              {{ item.hwidth }}
+            </li>
+            <li>
+              좋아요수
+              {{ item.count }}
+            </li>
+          </ul>
+        </b-card-text>
+      </b-card>
     </div>
   </div>
 </template>
@@ -71,4 +65,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#ingitext {
+  font-size: 15px;
+  font-weight: bold;
+}
+.cardul {
+  list-style: none;
+}
+.cardul li {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+.cards {
+  float: left;
+}
+.card {
+  display: inline-block;
+}
+</style>
