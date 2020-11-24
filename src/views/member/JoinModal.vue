@@ -22,7 +22,7 @@ export default {
         {
           name: 'dynamic-modal',
           width: '500px',
-          height: '500px',
+          height: '600px',
           draggalbe: true,
         }
       );

@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <table>
-      <tr>
-        <td>ID :</td>
-        <td><input type="text" v-model="user.userid" /></td>
-      </tr>
-      <tr>
-        <td>PW :</td>
-        <td><input type="password" v-model="user.userpw" /></td>
-      </tr>
-      <tr>
-        <button @click="login">로그인</button>
-        <button @click="cancel">취소</button>
-      </tr>
-    </table>
-  </div>
+    <div class="modal-content" style="font-size:20px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="font:bold;">Log-in</h3>
+      </div>
+      <div class="modal-body">
+        ID 
+        <br>
+        <input type="text" v-model="user.userid" />
+        <br><br>
+        PW
+        <br>
+        <input type="password" v-model="user.userpw" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" @click="login">로그인</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="cancel">취소</button>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -60,7 +62,6 @@ export default {
       }
     },
     cancel() {
-      console.log(this.$store.state.accessToken);
       this.$emit('close');
       this.$router.push('/');
     },
@@ -68,4 +69,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+ button {
+   width:20%;
+   height:10%;
+ }
+ input {
+   width:80%;
+   height:45px;
+ }
+</style>

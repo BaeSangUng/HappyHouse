@@ -1,28 +1,30 @@
 <template>
-  <div>
-    <table>
-      <tr>
-        <td>ID :</td>
-        <td><input type="text" v-model="member.userid" /></td>
-      </tr>
-      <tr>
-        <td>PW :</td>
-        <td><input type="password" v-model="member.userpw" /></td>
-      </tr>
-      <tr>
-        <td>PW(Confirm) :</td>
-        <td><input type="password" v-model="pw_c" /></td>
-      </tr>
-      <tr>
-        <td>Name :</td>
-        <td><input type="text" v-model="member.username" /></td>
-      </tr>
-      <tr>
-        <button @click="join">가입</button>
-        <button @click="$emit('close')">취소</button>
-      </tr>
-    </table>
-  </div>
+    <div class="modal-content" style="font-size:20px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="font:bold;">Join Member</h3>
+      </div>
+      <div class="modal-body">
+        ID 
+        <br>
+        <input type="text" v-model="member.userid" />
+        <br><br>
+        PW
+        <br>
+        <input type="password" v-model="member.userpw" />
+        <br><br>
+        PW(Confirm) :
+        <br>
+        <input type="password" v-model="pw_c" />
+        <br><br>
+        Name :
+        <br>
+        <input type="text" v-model="member.username" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" @click="join">가입</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="cancel">취소</button>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -56,8 +58,21 @@ export default {
           });
       }
     },
+    cancel() {
+      this.$emit('close');
+      this.$router.push('/');
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+ button {
+   width:20%;
+   height:10%;
+ }
+ input {
+   width:80%;
+   height:45px;
+ }
+</style>
