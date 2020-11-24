@@ -115,7 +115,7 @@ export default {
 .navbar {
   width: 100%;
   position: fixed;
-  background-color: #f5a25d;
+  background-color: #a3d8f4;
 }
 #logo {
   width: 260px;
