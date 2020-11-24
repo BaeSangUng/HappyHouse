@@ -220,14 +220,16 @@ export default {
     },
     geolocate() {
       navigator.geolocation.getCurrentPosition((position) => {
+        var tmp1 = String(position.coords.latitude).substring(0, 10);
+        var tmp2 = String(position.coords.longitude).substring(0, 10);
         this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longritude,
+          lat: parseFloat(tmp1),
+          lng: parseFloat(tmp2),
         };
         this.markers.push({
           position: {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
+            lat: this.center.lat,
+            lng: this.center.lng,
           },
         });
       });
