@@ -40,20 +40,6 @@
         <miniNotice />
       </div>
 
-      <div>
-        <table>
-          <tr>
-            <td>{{ popHouse[0] }}</td>
-            <td>{{ popHouse[1] }}</td>
-            <td>{{ popHouse[2] }}</td>
-          </tr>
-          <tr>
-            <td>{{ popHouse[3] }}</td>
-            <td>{{ popHouse[4] }}</td>
-            <td>{{ popHouse[5] }}</td>
-          </tr>
-        </table>
-      </div>
       <!-- </div> -->
 
       <!-- 오른쪽 사이드 -->
@@ -76,7 +62,6 @@ export default {
 
   data() {
     return {
-      popHouse: [],
       dongname: '',
       guguncode: '',
       apts: [],
@@ -87,17 +72,7 @@ export default {
       result: '',
     };
   },
-  created() {
-    axios
-      .get('http://localhost:8000/happyhouse/jjim/rank')
-      .then((response) => {
-        this.popHouse = response.data;
-        console.log(response.data);
-      })
-      .catch((ex) => {
-        console.log(ex);
-      });
-  },
+
   methods: {
     Search() {
       this.dongcnt = 0;
