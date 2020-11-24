@@ -1,58 +1,58 @@
 <template>
-<div>
-<table style="padding:5px; margin:10px;">
-  <tr>
-    <td colspan="3">지역선택</td>
-  </tr>
-  <tr>
-    <td>
-      <select
-        v-model="sidocode"
-        @change="onchange1()"
-        class="browser-default custom-select"
-      >
-        <option selected disabled>시/도</option>
-        <option
-          v-for="(item, index) in sidos"
-          :value="item.sido_code"
-          :key="index"
-          >{{ item.sido_name }}</option
-        >
-      </select>
-      </td>
-    <td>
-      <select
-        v-model="guguncode"
-        @change="onchange2()"
-        class="browser-default custom-select"
-      >
-        <option selected disabled>구/군</option>
-        <option
-          v-for="(item, index) in guguns"
-          :value="item.gugun_code"
-          :key="index"
-          >{{ item.gugun_name }}</option
-        >
-      </select>
-    </td>
-    <td>
-      <select
-        v-model="dongcode"
-        @change="onchange3()"
-        class="browser-default custom-select"
-      >
-        <option selected disabled>동/읍</option>
-        <option
-          v-for="(item, index) in dongs"
-          :value="item.dong_code"
-          :key="index"
-          >{{ item.dong_name }}</option
-        >
-      </select>
-    </td>
-  </tr>
-</table>
-</div>
+  <div>
+    <table style="padding:5px; margin:10px;">
+      <tr>
+        <td colspan="3">지역선택</td>
+      </tr>
+      <tr>
+        <td>
+          <select
+            v-model="sidocode"
+            @change="onchange1()"
+            class="browser-default custom-select"
+          >
+            <option selected disabled>시/도</option>
+            <option
+              v-for="(item, index) in sidos"
+              :value="item.sido_code"
+              :key="index"
+              >{{ item.sido_name }}</option
+            >
+          </select>
+        </td>
+        <td>
+          <select
+            v-model="guguncode"
+            @change="onchange2()"
+            class="browser-default custom-select"
+          >
+            <option selected disabled>구/군</option>
+            <option
+              v-for="(item, index) in guguns"
+              :value="item.gugun_code"
+              :key="index"
+              >{{ item.gugun_name }}</option
+            >
+          </select>
+        </td>
+        <td>
+          <select
+            v-model="dongcode"
+            @change="onchange3()"
+            class="browser-default custom-select"
+          >
+            <option selected disabled>동/읍</option>
+            <option
+              v-for="(item, index) in dongs"
+              :value="item.dong_code"
+              :key="index"
+              >{{ item.dong_name }}</option
+            >
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
