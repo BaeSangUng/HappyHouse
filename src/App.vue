@@ -41,19 +41,18 @@
     </div>
     <router-view />
 
-      <div class="appfooter">
-        <appfooter />
-      </div>
-
+    <div class="appfooter">
+      <appfooter />
+    </div>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
-import appfooter from "@/views/AppFooter.vue";
+import appfooter from '@/views/AppFooter.vue';
 
 export default {
-  components : {
-    appfooter
+  components: {
+    appfooter,
   },
   data() {
     return {
@@ -121,9 +120,6 @@ export default {
 #searchbtn {
   position: relative;
   display: inline-block;
-}
-.col {
-  background: grey;
 }
 .col-8 {
   padding: 0;
