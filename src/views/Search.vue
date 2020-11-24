@@ -59,7 +59,7 @@
         </ul>
       </div>
       <div class="col">
-        <div>
+        <div v-if="flag">
           <apt-detail :apt="selectedApt" />
         </div>
         <div>
@@ -111,6 +111,8 @@ export default {
       markers: [],
       places: [],
       currentPlace: null,
+
+      flag : false,
     };
   },
   mounted() {
@@ -196,6 +198,12 @@ export default {
       console.log(this.markers);
     },
     selectApt: function(apt) {
+      if(this.flag){
+        this.flag = false;
+        this.selectedApt;
+      } else{
+        this.flag = true;
+      }
       this.selectedApt = apt;
     },
 

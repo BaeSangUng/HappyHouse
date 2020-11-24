@@ -25,8 +25,11 @@ export default {
   props: {
     apt: [Object, String],
   },
-  component: {
-    heart: '♡',
+  data(){
+    return {
+      heart: '♡',
+
+    }
   },
   computed: {
     ...mapGetters(['getAccessToken', 'getUserId', 'getUserPw', 'getUserName']),
@@ -48,32 +51,47 @@ export default {
       this.$store.state.userName = sessionStorage.getItem('userName');
     }
     var temp = {
-      num: this.apt.일련번호,
-      userId: this.$store.state.userId,
+      userid: this.$store.state.userId,
+      hno: this.apt.일련번호,
     };
-    axios.get('url', temp).then((response) => {
+    console.log(temp);
+    axios
+    .post('http://localhost:8000/happyhouse/jjim/isJjim', temp)
+    .then((response) => {
+      console.log(response.data);
       if (response.data) {
         this.heart = '♥';
       } else {
         this.heart = '♡';
       }
+    })
+    .catch((ex)=>{
+      console.log(temp);
+      console.log(ex);
     });
   },
   methods: {
     jjim() {
       if (
-        sessionStorage.getItem('accessToken') != null &&
-        sessionStorage.getItem('accessToken') != ''
+        sessionStorage.getItem('accessToken') == null &&
+        sessionStorage.getItem('accessToken') == ''
       ) {
         this.$router.push('/happyhouse/loginModal');
       }
       var temp = {
-        num: this.apt.일련번호,
-        userId: this.$store.state.userId,
+      userid: this.$store.state.userId,
+      hno: this.apt.일련번호,
       };
+      var hinfo = {
+        hno : this.apt.일련번호,
+        hname : this.apt.아파트,
+        hdong : this.apt.법정동,
+        hwidth : this.apt.전용면적,
+        hprice : parseInt(this.apt.거래금액.replace(',','')),
+      }
       if (this.heart == '♥') {
         axios
-          .delete('url', temp)
+          .post('http://localhost:8000/happyhouse/jjim/delJjim', temp)
           .then(() => {
             this.heart = '♡';
           })
@@ -82,7 +100,7 @@ export default {
           });
       } else {
         axios
-          .post('url', temp)
+          .post('http://localhost:8000/happyhouse/jjim/insertJjim', {jjim : temp, hinfo :  hinfo})
           .then(() => {
             this.heart = '♥';
           })

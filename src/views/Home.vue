@@ -23,6 +23,21 @@
       <div class="col miniNotice">
         <miniNotice />
       </div>
+
+      <div>
+        <table>
+          <tr>
+            <td>{{popHouse[0]}}</td>
+            <td>{{popHouse[1]}}</td>
+            <td>{{popHouse[2]}}</td>
+          </tr>
+          <tr>
+            <td>{{popHouse[3]}}</td>
+            <td>{{popHouse[4]}}</td>
+            <td>{{popHouse[5]}}</td>
+          </tr>
+        </table>
+      </div>
       <!-- </div> -->
 
       <!-- 오른쪽 사이드 -->
@@ -35,11 +50,30 @@
 // @ is an alias to /src
 import ingichart from '@/components/ingichart.vue';
 import miniNotice from '@/components/miniNotice.vue';
+import axios from 'axios';
+
 export default {
   components: {
     ingichart,
     miniNotice,
   },
+
+  data(){
+    return {
+      popHouse : [],
+    }
+  },
+  created(){
+    axios
+    .get("http://localhost:8000/happyhouse/jjim/rank")
+    .then((response)=>{
+      this.popHouse = response.data;
+      console.log(response.data);
+    })
+    .catch((ex)=>{
+      console.log(ex);
+    })
+  }
 };
 </script>
 
