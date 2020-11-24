@@ -1,19 +1,54 @@
 <template>
   <div v-if="apt">
     <h3>{{ apt.아파트 }}</h3>
-    <img src="@/assets/건물.jpg" alt="행복 아파트" />
+    <img src="@/assets/건물.jpg" width="300px;" alt="행복 아파트" />
     <div style="margin: 10px"></div>
     <ul class="detailul">
-      <li class="detailli">일련번호 : {{ apt.일련번호 }}</li>
-      <li class="detailli">아파트 이름 : {{ apt.아파트 }}</li>
-      <li class="detailli">법정동 : {{ apt.법정동 }}</li>
-      <li class="detailli">층수 : {{ apt.층 }}층</li>
       <li class="detailli">
-        거래금액 : {{ (apt.거래금액.replace(',', '') * 10000) | price }}원
+        <div class="row">
+          <div class="col detailname">
+            일련번호
+          </div>
+          <div class="col-7 detailresult">
+            {{ apt.일련번호 }}
+          </div>
+        </div>
+      </li>
+      <li class="detailli">
+        <div class="row">
+          <div class="col detailname">
+            아파트 이름
+          </div>
+          <div class="col-7 detailresult">
+            {{ apt.아파트 }}
+          </div>
+        </div>
+      </li>
+      <li class="detailli">
+        <div class="row">
+          <div class="col detailname">법정동</div>
+          <div class="col-7 detailresult">{{ apt.법정동 }}</div>
+        </div>
+      </li>
+      <li class="detailli">
+        <div class="row">
+          <div class="col detailname">층수</div>
+          <div class="col-7 detailresult">{{ apt.층 }}층</div>
+        </div>
+      </li>
+      <li class="detailli">
+        <div class="row">
+          <div class="col detailname">
+            거래금액
+          </div>
+          <div class="col-7 detailresult">
+            {{ (apt.거래금액.replace(',', '') * 10000) | price }}원
+          </div>
+        </div>
       </li>
     </ul>
 
-    <input type="text" v-model="heart" @click="jjim" />
+    <b-button @click="jjim">{{ heart }}</b-button>
   </div>
 </template>
 
@@ -118,5 +153,12 @@ export default {
 <style>
 ul {
   list-style: none;
+}
+.detailname {
+  font-weight: bold;
+}
+.detailresult {
+  font-size: 22px;
+  text-align: left;
 }
 </style>
