@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid" style="font-family: 'Noto Sans KR', sans-serif;">
+  <div id="app" class="container-fluid" style="font-family: 'Noto Sans KR', sans-serif; font-size:20px;">
     <div class="navbar">
       <img id="logo" src="@/assets/logo.jpg" />
       <b-nav tabs>

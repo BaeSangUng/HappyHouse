@@ -10,6 +10,7 @@
         v-model="sidocode"
         @change="onchange1()"
         class="browser-default custom-select"
+        style="width:200px;"
       >
         <option selected disabled>시/도</option>
         <option
@@ -25,6 +26,7 @@
         v-model="guguncode"
         @change="onchange2()"
         class="browser-default custom-select"
+        style="width:200px;"
       >
         <option selected disabled>구/군</option>
         <option
@@ -40,6 +42,7 @@
         v-model="dongcode"
         @change="onchange3()"
         class="browser-default custom-select"
+        style="width:200px;"
       >
         <option selected disabled>동/읍</option>
         <option

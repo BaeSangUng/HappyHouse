@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="emptyspace"></div>
+    <div class="emptyspace" style="text-align:left;">
+      <h1 style="padding-left:20%;">매물 상세 검색</h1>
+    </div>
     <div class="row">
       <SearchBar @send-dong-code="sendDongCode"/>
       <div style="padding:5px; margin:10px;">
@@ -12,8 +14,9 @@
           max="3000000"
           step="10"
           v-model="limit_price"
+          style="margin-right:5px; width:200px;"
         />
-        <input type="text" v-model="limit_price" /> 이하<br />
+        <input type="text" v-model="limit_price" style="margin:5px;"/>이하<br />
         면적 :
         <input
           type="range"
@@ -22,18 +25,19 @@
           max="200"
           step="10"
           v-model="limit_width"
+          style="margin-right:5px; width:200px;"
         />
 
-        <input type="text" v-model="limit_width" /> 이하<br />
+        <input type="text" v-model="limit_width" style="margin:5px;" />이하<br />
       </div>
 
       <input
         type="text"
         v-if="sendDongCode != null"
         v-on:keyup.enter="searchByAptName"
-        style="height:45px; width:20%; margin-top:20px;"
+        style="height:45px; width:20%; margin-top:30px;"
       />
-      <button @click="searchByAptName" style="height:45px; width:5%; margin-top:20px;">Search</button>
+      <button @click="searchByAptName" style="height:45px; width:5%; margin-top:30px; margin-left:5px;">Search</button>
 
     </div>
     <div class="row">
@@ -60,6 +64,9 @@
             {{ item.아파트 }}
           </li>
         </ul>
+        <div v-if="showaptsList.length<1" style="margin-top:25%;">
+          <h1>검색 결과 없음</h1>
+        </div>
       </div>
       <div class="col">
         <div v-if="flag">
