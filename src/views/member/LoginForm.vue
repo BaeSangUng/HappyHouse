@@ -1,5 +1,5 @@
 <template>
-    <div class="modal-content" style="font-size:20px;">
+    <div class="modal-content" style="font-size:20px;" id="loginform">
       <div class="modal-header">
         <h3 class="modal-title" style="font:bold;">Log-in</h3>
       </div>
@@ -70,11 +70,11 @@ export default {
 </script>
 
 <style>
- button {
+#loginform button {
    width:20%;
    height:10%;
  }
- input {
+#loginform input {
    width:80%;
    height:45px;
  }

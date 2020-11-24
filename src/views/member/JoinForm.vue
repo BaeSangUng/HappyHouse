@@ -1,5 +1,5 @@
 <template>
-    <div class="modal-content" style="font-size:20px;">
+    <div class="modal-content" style="font-size:20px;" id="joinform">
       <div class="modal-header">
         <h3 class="modal-title" style="font:bold;">Join Member</h3>
       </div>
@@ -67,11 +67,11 @@ export default {
 </script>
 
 <style>
- button {
+#joinform button {
    width:20%;
    height:10%;
  }
- input {
+#joinform input {
    width:80%;
    height:45px;
  }
