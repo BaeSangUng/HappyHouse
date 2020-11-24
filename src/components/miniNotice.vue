@@ -1,7 +1,10 @@
 <template>
   <div class="miniNotice" id="miniNotice">
+    <div class="emptyspace"></div>
     <ul id="miniul">
-      <li class="minili" id="minilihead"><span>공지사항</span></li>
+      <li class="minili" id="minilihead">
+        <span id="noticecontext">공지사항</span>
+      </li>
       <li class="minili">
         <router-link :to="'/happyhouse/HelpDesk/Notice/read'">
           채용 공고 안내</router-link
@@ -39,8 +42,22 @@ export default {};
   list-style: none;
 }
 #miniul li span {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
+}
+#miniul li {
+  font-size: 20px;
+}
+.minili a {
+  text-decoration: none;
+  color: darkslategray;
+}
+.minili a:link {
+  text-decoration: none;
+}
+.minili a:hover {
+  color: dodgerblue;
+  font-size: 22px;
 }
 #minilihead {
   padding-bottom: 10px;

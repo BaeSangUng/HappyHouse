@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="emptyspace"></div>
     <span id="ingitext">인기차트</span>
 
     <div class="cards">
@@ -14,26 +15,52 @@
         img-alt="건물"
         img-top
         tag="article"
-        style="max-width: 20rem; max-height:5rem; display:inline-block; "
+        style="width:300px; height:400px;display:inline-block; padding:0px;"
         class="mb-2"
       >
-        <b-card-text>
+        <b-card-text style="padding:0px; margin:0px;">
           <ul class="cardul">
             <li>
-              동
-              {{ item.hdong }}
+              <div class="row">
+                <div class="col">
+                  <span class="cardbodylist">동</span>
+                </div>
+                <div class="col">
+                  {{ item.hdong }}
+                </div>
+              </div>
             </li>
             <li>
-              가격
-              {{ item.hprice }}
+              <div class="row">
+                <div class="col">
+                  <span class="cardbodylist">가격</span>
+                </div>
+                <div class="col">
+                  {{ item.hprice }}
+                </div>
+              </div>
             </li>
             <li>
-              면적
-              {{ item.hwidth }}
+              <div class="row">
+                <div class="col">
+                  <span class="cardbodylist">면적</span>
+                </div>
+
+                <div class="col">
+                  {{ item.hwidth }}
+                </div>
+              </div>
             </li>
             <li>
-              좋아요수
-              {{ item.count }}
+              <div class="row">
+                <div class="col">
+                  <span class="cardbodylist">좋아요수</span>
+                </div>
+
+                <div class="col">
+                  {{ item.count }}
+                </div>
+              </div>
             </li>
           </ul>
         </b-card-text>
@@ -67,7 +94,7 @@ export default {
 
 <style>
 #ingitext {
-  font-size: 15px;
+  font-size: 30px;
   font-weight: bold;
 }
 .cardul {
@@ -78,11 +105,24 @@ export default {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   font-weight: bold;
+  text-align: left;
 }
-.cards {
-  float: left;
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.card {
-  display: inline-block;
+.cardbodylist {
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  color: darkslategray;
+}
+div .card-body {
+  padding: 0px;
+}
+.card-body {
+  padding: 0px;
+  margin: 0;
 }
 </style>
