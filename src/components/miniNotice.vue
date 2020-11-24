@@ -26,6 +26,22 @@
         >
       </li>
     </ul>
+    <div class="whitespace"></div>
+    <ul id="miniul">
+      <li class="minili" id="minilihead">
+        <span id="videoText">How to Use</span>
+      </li>
+      <li class="minili">
+        <iframe
+          width="90%"
+          height="400"
+          src="https://www.youtube.com/embed/dyRsYk0LyA8"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -34,8 +50,20 @@ export default {};
 </script>
 
 <style>
+.whitespace {
+  width: 100%;
+  height: 100px;
+}
 #miniNotice {
   border-left: 1px solid black;
+}
+.videopart {
+  text-align: left;
+}
+#videoText {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bold;
 }
 #miniul {
   text-align: left;
