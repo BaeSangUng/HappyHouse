@@ -1,6 +1,11 @@
 <template>
-  <b-row>
-    <b-col align="left">
+<div>
+<table style="padding:5px; margin:10px;">
+  <tr>
+    <td colspan="3">지역선택</td>
+  </tr>
+  <tr>
+    <td>
       <select
         v-model="sidocode"
         @change="onchange1()"
@@ -14,7 +19,8 @@
           >{{ item.sido_name }}</option
         >
       </select>
-
+      </td>
+    <td>
       <select
         v-model="guguncode"
         @change="onchange2()"
@@ -28,7 +34,8 @@
           >{{ item.gugun_name }}</option
         >
       </select>
-
+    </td>
+    <td>
       <select
         v-model="dongcode"
         @change="onchange3()"
@@ -42,8 +49,10 @@
           >{{ item.dong_name }}</option
         >
       </select>
-    </b-col>
-  </b-row>
+    </td>
+  </tr>
+</table>
+</div>
 </template>
 
 <script>

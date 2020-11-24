@@ -2,8 +2,8 @@
   <div>
     <div class="emptyspace"></div>
     <div class="row">
-      <SearchBar @send-dong-code="sendDongCode" />
-      <div>
+      <SearchBar @send-dong-code="sendDongCode"/>
+      <div style="padding:5px; margin:10px;">
         가격 :
         <input
           type="range"
@@ -23,6 +23,7 @@
           step="10"
           v-model="limit_width"
         />
+
         <input type="text" v-model="limit_width" /> 이하<br />
       </div>
 
@@ -30,8 +31,10 @@
         type="text"
         v-if="sendDongCode != null"
         v-on:keyup.enter="searchByAptName"
+        style="height:45px; width:20%; margin-top:20px;"
       />
-      <button @click="searchByAptName">검색</button>
+      <button @click="searchByAptName" style="height:45px; width:5%; margin-top:20px;">Search</button>
+
     </div>
     <div class="row">
       <div class="col">
