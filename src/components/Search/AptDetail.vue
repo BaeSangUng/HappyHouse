@@ -1,5 +1,5 @@
 <template>
-  <div v-if="apt">
+  <div v-if="apt && logon">
     <h3>{{ apt.아파트 }}</h3>
     <img src="@/assets/건물.jpg" width="300px;" alt="행복 아파트" />
     <div style="margin: 10px"></div>
@@ -63,6 +63,7 @@ export default {
   data() {
     return {
       heart: '♡',
+      logon: false,
     };
   },
   computed: {
@@ -83,6 +84,7 @@ export default {
       this.$store.state.userId = sessionStorage.getItem('userId');
       this.$store.state.userPw = sessionStorage.getItem('userPw');
       this.$store.state.userName = sessionStorage.getItem('userName');
+      this.logon = true;
     }
     var temp = {
       userid: this.$store.state.userId,
@@ -112,6 +114,7 @@ export default {
       ) {
         this.$router.push('/happyhouse/loginModal');
       }
+
       var temp = {
         userid: this.$store.state.userId,
         hno: this.apt.일련번호,

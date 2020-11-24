@@ -255,6 +255,11 @@ export default {
       console.log(this.markers);
     },
     selectApt: function(apt) {
+      if (this.$store.state.userId == '' || this.$store.state.userId == null) {
+        alert('로그인 필수 기능입니다.');
+        this.$router.push('/happyhouse/loginModal');
+      }
+      this.$store.state.acc;
       if (this.flag) {
         this.flag = false;
         this.selectedApt;
