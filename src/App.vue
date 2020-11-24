@@ -29,12 +29,13 @@
             {{ getUserName }}({{ getUserId }})님 환영합니다. |
             <router-link to="/happyhouse/updateModal">내 정보</router-link> |
             <a @click.prevent="onClickLogout">로그아웃</a>
+            <router-link to="/happyhouse/jjim">찜목록 보기</router-link>
           </div>
 
           <div v-else>
             <router-link to="/happyhouse/loginModal">로그인</router-link> |
             <router-link to="/happyhouse/joinModal">회원가입</router-link> |
-            <router-link to="/happyhouse/map">지도보기</router-link>
+
           </div>
         </b-nav-item>
       </b-nav>
