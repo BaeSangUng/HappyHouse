@@ -27,6 +27,7 @@ import UpdateModal from "../views/member/UpdateModal.vue";
 
 import Jjim from "../views/jjim/Jjim.vue";
 
+import About from "@/views/About.vue";
 
 Vue.use(VueRouter);
 
@@ -139,6 +140,11 @@ const routes = [
     path: "/happyhouse/jjim",
     name: "Jjim",
     component: Jjim
+  },
+  {
+    path: "/happyhouse/about",
+    name: "About",
+    component: About
   },
 ];
 

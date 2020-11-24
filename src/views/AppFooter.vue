@@ -1,6 +1,9 @@
 <template>
   <div>
     <footer>
+      <p>
+        <router-link to="/happyhouse/about">About & Contact</router-link> 
+      </p>
       <p>Copyright © 2020 happyhouse.co.,Ltd. All rights reserved.</p>
       <address>Contact webmaster for more information. 010-9089-7361</address>
     </footer>
@@ -8,6 +11,7 @@
 </template>
 
 <script>
+
 export default {
 
 }
