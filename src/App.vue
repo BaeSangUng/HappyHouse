@@ -28,7 +28,7 @@
             ></b-avatar>
             {{ getUserName }}({{ getUserId }})님 환영합니다. |
             <router-link to="/happyhouse/updateModal">내 정보</router-link> |
-            <a @click.prevent="onClickLogout">로그아웃</a>
+            <a @click.prevent="onClickLogout">로그아웃</a> | 
             <router-link to="/happyhouse/jjim">찜목록 보기</router-link>
           </div>
 
