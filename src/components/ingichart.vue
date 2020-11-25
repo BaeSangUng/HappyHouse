@@ -17,6 +17,7 @@
         tag="article"
         style="width:300px; height:400px;display:inline-block; padding:0px;"
         class="mb-2"
+         @click="clickCard(index)"
       >
         <b-card-text style="padding:0px; margin:0px;">
           <ul class="cardul">
@@ -66,11 +67,16 @@
         </b-card-text>
       </b-card>
     </div>
+    <div class="row">
+        <modals-container />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import IngichartModal from './ingichartModal.vue';
+
 export default {
   data() {
     return {
@@ -89,6 +95,28 @@ export default {
         console.log(ex);
       });
   },
+
+  methods: {
+    clickCard(index){
+      var popupData = this.popHouse[index];
+      this.popup(popupData);
+    },
+    popup(data){
+      this.$modal.show(
+        IngichartModal,
+        {
+          hot_table: data,
+          modal: this.$modal,
+        },
+        {
+          name: 'dynamic-modal',
+          width: '500px',
+          height: '450px',
+          draggalbe: true,
+        }
+      );
+    }
+  }
 };
 </script>
 
