@@ -41,8 +41,9 @@
 
       <input
         type="text"
-        v-if="sendDongCode != null"
+        v-if="sendDongCode != null || sendDongcode != ''"
         v-on:keyup.enter="searchByAptName"
+        v-model="apt"
         style="height:45px; width:20%; margin-top:30px;"
       />
       <button
@@ -210,6 +211,7 @@ export default {
       console.log(this.apts);
       for (var i = 0; i < this.aptsSize; i++) {
         if (this.apts[i].아파트.search(this.apt) != -1) {
+          console.log(this.apt);
           if (this.apts[i].법정동읍면동코드 == this.dongCode.substring(5, 10)) {
             console.log(parseInt(this.apts[i].거래금액.replace(',', '')));
             if (
